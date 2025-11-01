@@ -60,8 +60,26 @@ namespace PSSGEditor
 
             if (item.Tag is Pssg3DNode node)
             {
-                // Показываем информацию о ноде
-                Show3DNodeDetails(node);
+                // Проверяем есть ли у этой ноды материалы
+                var nodeMaterials = allMaterials.Where(m =>
+                    m.PathToRoot.Count > 0 &&
+                    m.PathToRoot.Last() == node.Node).ToList();
+
+                if (nodeMaterials.Count > 0)
+                {
+                    // Рендерим все материалы этой ноды вместе
+                    Model3DView.Visibility = Visibility.Visible;
+                    ViewHelpPanel.Visibility = Visibility.Visible;
+                    ModelInfoPanel.Visibility = Visibility.Visible;
+                    No3DObjectText.Visibility = Visibility.Collapsed;
+
+                    RenderAllMaterialsForNode(node, nodeMaterials);
+                }
+                else
+                {
+                    // Показываем информацию о ноде
+                    Show3DNodeDetails(node);
+                }
             }
             else if (item.Tag is MaterialWithPath material)
             {
@@ -652,6 +670,59 @@ namespace PSSGEditor
             catch (Exception ex)
             {
                 StatusText.Text = $"Error rendering material: {ex.Message}";
+            }
+        }
+
+        /// <summary>
+        /// Отрисовка всех материалов ноды вместе
+        /// </summary>
+        private void RenderAllMaterialsForNode(Pssg3DNode node, List<MaterialWithPath> materials)
+        {
+            try
+            {
+                StatusText.Text = $"Rendering 3D object: {node.Id}...";
+
+                int totalVertices = 0;
+                int totalTriangles = 0;
+
+                ModelInfoText.Text = $"{node.Id}\n";
+                ModelInfoText.Text += $"Type: {node.Type}\n";
+                ModelInfoText.Text += $"Materials: {materials.Count}\n";
+
+                // Отрисовываем каждый материал
+                foreach (var material in materials)
+                {
+                    var model = Create3DMeshFromMaterial(material);
+                    if (model != null)
+                    {
+                        Model3DContainer.Children.Add(new ModelVisual3D { Content = model });
+
+                        // Подсчет вертексов и треугольников
+                        if (model.Children.Count > 0 && model.Children[0] is GeometryModel3D geoModel &&
+                            geoModel.Geometry is MeshGeometry3D mesh)
+                        {
+                            totalVertices += mesh.Positions.Count;
+                            totalTriangles += mesh.TriangleIndices.Count / 3;
+                        }
+                    }
+                }
+
+                ModelInfoText.Text += $"Total Vertices: {totalVertices}\n";
+                ModelInfoText.Text += $"Total Triangles: {totalTriangles}";
+
+                // Добавляем систему координат
+                Model3DContainer.Children.Add(new CoordinateSystemVisual3D { ArrowLengths = 2 });
+
+                // Настраиваем камеру
+                Model3DView.ResetCamera();
+                Model3DView.ZoomExtents();
+
+                StatusText.Text = "3D object rendered successfully";
+            }
+            catch (Exception ex)
+            {
+                StatusText.Text = $"Error rendering 3D object: {ex.Message}";
+                ModelInfoText.Text = $"Error: {ex.Message}";
             }
         }
 

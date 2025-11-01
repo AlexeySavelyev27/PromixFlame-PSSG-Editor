@@ -16,7 +16,7 @@ namespace PSSGEditor
         private Dictionary<string, Pssg3DGeometryBlock> geometry3DBlocks = new Dictionary<string, Pssg3DGeometryBlock>();
         private Dictionary<string, Pssg3DRenderSource> renderSources = new Dictionary<string, Pssg3DRenderSource>();
         private Dictionary<string, Pssg3DShader> shaders3D = new Dictionary<string, Pssg3DShader>();
-        private Dictionary<string, string> renderSourceMap = new Dictionary<string, string>();
+        private List<MaterialWithPath> allMaterials = new List<MaterialWithPath>();
 
         // Track current camera state to lock roll
         private Vector3D camera3DUpDirection = new Vector3D(0, 0, 1);
@@ -33,7 +33,7 @@ namespace PSSGEditor
             // Настройка camera controls
             Model3DView.CameraMode = CameraMode.Inspect;
             Model3DView.Camera.UpDirection = camera3DUpDirection;
-            
+
             // Subscribe to mouse events
             Model3DView.MouseDown += Model3DView_MouseDown;
             Model3DView.MouseMove += Model3DView_MouseMove;
@@ -53,36 +53,23 @@ namespace PSSGEditor
             // Проверяем тип выбранного элемента
             if (item.Tag is string tagString)
             {
-                // Это служебные узлы типа "materials", "textures"
+                // Это служебные узлы типа "materials"
                 Show3DTagDetails(tagString);
                 return;
             }
 
             if (item.Tag is Pssg3DNode node)
             {
-                // Если это render node с материалами - рендерим 3D
-                if (node.IsRenderNode)
-                {
-                    Model3DView.Visibility = Visibility.Visible;
-                    ViewHelpPanel.Visibility = Visibility.Visible;
-                    ModelInfoPanel.Visibility = Visibility.Visible;
-                    No3DObjectText.Visibility = Visibility.Collapsed;
-                    
-                    Render3DObject(node);
-                }
-                else
-                {
-                    // Иначе показываем информацию о ноде
-                    Show3DNodeDetails(node);
-                }
+                // Показываем информацию о ноде
+                Show3DNodeDetails(node);
             }
-            else if (item.Tag is Pssg3DMaterial material)
+            else if (item.Tag is MaterialWithPath material)
             {
                 Model3DView.Visibility = Visibility.Visible;
                 ViewHelpPanel.Visibility = Visibility.Visible;
                 ModelInfoPanel.Visibility = Visibility.Visible;
                 No3DObjectText.Visibility = Visibility.Collapsed;
-                
+
                 RenderMaterial(material);
             }
             else
@@ -96,7 +83,7 @@ namespace PSSGEditor
         }
 
         /// <summary>
-        /// Построение дерева 3D объектов из PSSG структуры (универсальная версия)
+        /// Построение дерева 3D объектов из PSSG структуры (универсальный bottom-up подход)
         /// </summary>
         public void Build3DObjectsTree()
         {
@@ -104,7 +91,7 @@ namespace PSSGEditor
             geometry3DBlocks.Clear();
             renderSources.Clear();
             shaders3D.Clear();
-            renderSourceMap.Clear();
+            allMaterials.Clear();
 
             if (rootNode == null)
                 return;
@@ -113,54 +100,24 @@ namespace PSSGEditor
             {
                 StatusText.Text = "Building 3D objects tree...";
 
-                // Шаг 1: Парсим шейдеры
+                // ═══════════════════════════════════════════════════════
+                // ФАЗА 1: ИНДЕКСАЦИЯ - собираем все ресурсы
+                // ═══════════════════════════════════════════════════════
                 ParseShaders(rootNode);
-
-                // Шаг 2: Собираем все DATABLOCK ноды (геометрия)
                 Parse3DGeometryBlocks(rootNode);
-
-                // Шаг 3: Собираем RENDERDATASOURCE ноды и строим карту
                 Parse3DRenderSources(rootNode);
 
-                // Шаг 4: Строим дерево объектов - добавляем напрямую в TreeView
-                var rootNodes = FindAllNodesByName(rootNode, "ROOTNODE");
-                var objectItems = new List<TreeViewItem>();
+                // ═══════════════════════════════════════════════════════
+                // ФАЗА 2: ПОИСК RENDER INSTANCES (bottom-up от данных)
+                // ═══════════════════════════════════════════════════════
+                FindRenderInstances(rootNode, new List<PSSGNode>(), allMaterials);
 
-                foreach (var rootNodeItem in rootNodes)
-                {
-                    string id = GetAttributeValue(rootNodeItem, "id", "");
-                    if (string.IsNullOrEmpty(id)) continue;
+                // ═══════════════════════════════════════════════════════
+                // ФАЗА 3: ПОСТРОЕНИЕ UI ДЕРЕВА (группировка по родителям)
+                // ═══════════════════════════════════════════════════════
+                BuildUIFromMaterials();
 
-                    // Получаем имя объекта (убираем " Root" из конца)
-                    string objectName = id;
-                    if (objectName.EndsWith(" Root"))
-                        objectName = objectName.Substring(0, objectName.Length - 5);
-
-                    // Создаем узел дерева
-                    var objectItem = new TreeViewItem
-                    {
-                        Header = objectName,
-                        Tag = new Pssg3DNode
-                        {
-                            Id = id,
-                            Node = rootNodeItem,
-                            IsRenderNode = false,
-                            Type = "ROOTNODE"
-                        },
-                        IsExpanded = false
-                    };
-
-                    // Рекурсивно обрабатываем дочерние узлы
-                    ProcessNode(rootNodeItem, objectItem);
-                    objectItems.Add(objectItem);
-                }
-
-                // Сортируем по имени и добавляем напрямую в TreeView
-                objectItems.Sort((a, b) => string.Compare(a.Header.ToString(), b.Header.ToString(), StringComparison.OrdinalIgnoreCase));
-                foreach (var item in objectItems)
-                    Objects3DTreeView.Items.Add(item);
-
-                StatusText.Text = $"Found {geometry3DBlocks.Count} geometry blocks, {shaders3D.Count} shaders, {renderSources.Count} render sources";
+                StatusText.Text = $"Found {geometry3DBlocks.Count} geometry blocks, {shaders3D.Count} shaders, {allMaterials.Count} materials";
             }
             catch (Exception ex)
             {
@@ -215,7 +172,7 @@ namespace PSSGEditor
             if (node.Name == "DATABLOCK" && node.Attributes.ContainsKey("id"))
             {
                 string id = GetAttributeValue(node, "id", "");
-                
+
                 var block = new Pssg3DGeometryBlock
                 {
                     Id = id,
@@ -260,28 +217,23 @@ namespace PSSGEditor
             if (node.Name == "RENDERDATASOURCE" && node.Attributes.ContainsKey("id"))
             {
                 string id = GetAttributeValue(node, "id", "");
-                
+
                 var source = new Pssg3DRenderSource
                 {
                     Id = id,
                     Node = node
                 };
 
-                // Найдем RENDERSTREAM child nodes и создадим карту
+                // Найдем RENDERSTREAM child nodes
                 foreach (var child in node.Children)
                 {
                     if (child.Name == "RENDERSTREAM")
                     {
-                        string streamId = GetAttributeValue(child, "id", "");
                         string blockRef = GetAttributeValue(child, "dataBlock", "");
                         blockRef = blockRef.TrimStart('#');
-                        
+
                         if (!string.IsNullOrEmpty(blockRef))
                             source.DataBlockIds.Add(blockRef);
-                        
-                        // Создаем карту stream -> datablock
-                        if (!string.IsNullOrEmpty(streamId) && !string.IsNullOrEmpty(blockRef))
-                            renderSourceMap[streamId] = blockRef;
                     }
                     else if (child.Name == "RENDERINDEXSOURCE")
                     {
@@ -297,267 +249,267 @@ namespace PSSGEditor
         }
 
         /// <summary>
-        /// Проверяет является ли нода render instance (по атрибутам, а не по имени)
+        /// Поиск render instances с сохранением пути к корню (ФАЗА 2)
         /// </summary>
-        private bool IsRenderInstance(PSSGNode node)
+        private void FindRenderInstances(PSSGNode node, List<PSSGNode> pathFromRoot, List<MaterialWithPath> materials)
         {
-            // Проверяем наличие shader атрибута
-            if (node.Attributes.ContainsKey("shader"))
+            // Проверяем: есть ли child RENDERINSTANCESOURCE?
+            var sourceRefNode = FindChildByName(node, "RENDERINSTANCESOURCE");
+
+            if (sourceRefNode != null)
+            {
+                // ЭТО RENDER INSTANCE! (независимо от имени ноды)
+                string sourceId = GetAttributeValue(sourceRefNode, "source", "").TrimStart('#');
+                string shaderId = GetAttributeValue(node, "shader", "").TrimStart('#');
+
+                // Находим цепочку: source -> datablock -> geometry
+                if (!string.IsNullOrEmpty(sourceId) && renderSources.TryGetValue(sourceId, out var renderSource))
+                {
+                    if (renderSource.DataBlockIds.Count > 0)
+                    {
+                        string dataBlockId = renderSource.DataBlockIds[0];
+
+                        if (geometry3DBlocks.TryGetValue(dataBlockId, out var geometryBlock))
+                        {
+                            // Сохраняем материал с полным путем!
+                            var material = new MaterialWithPath
+                            {
+                                InstanceNode = node,
+                                SourceId = sourceId,
+                                GeometryId = dataBlockId,
+                                ShaderId = shaderId,
+                                PathToRoot = new List<PSSGNode>(pathFromRoot), // копируем путь
+                                RenderSource = renderSource,
+                                GeometryBlock = geometryBlock
+                            };
+
+                            materials.Add(material);
+                        }
+                    }
+                }
+            }
+
+            // Продолжаем рекурсию для всех детей
+            foreach (var child in node.Children)
+            {
+                var newPath = new List<PSSGNode>(pathFromRoot);
+                newPath.Add(node);
+                FindRenderInstances(child, newPath, materials);
+            }
+        }
+
+        /// <summary>
+        /// Построение UI дерева из найденных материалов (ФАЗА 3)
+        /// </summary>
+        private void BuildUIFromMaterials()
+        {
+            if (allMaterials.Count == 0)
+            {
+                StatusText.Text = "No geometry data found";
+                return;
+            }
+
+            // Группируем материалы по их прямому родителю
+            var groupedByParent = new Dictionary<PSSGNode, List<MaterialWithPath>>();
+
+            foreach (var material in allMaterials)
+            {
+                // Прямой родитель - это нода в которой находится render instance
+                PSSGNode parent = material.PathToRoot.Count > 0
+                    ? material.PathToRoot.Last()
+                    : rootNode;
+
+                if (!groupedByParent.ContainsKey(parent))
+                    groupedByParent[parent] = new List<MaterialWithPath>();
+
+                groupedByParent[parent].Add(material);
+            }
+
+            // Находим все потенциальные корневые ноды
+            var topLevelNodes = FindTopLevelNodes();
+
+            // Строим дерево для каждой корневой ноды
+            foreach (var topNode in topLevelNodes)
+            {
+                var uiNode = CreateUINode(topNode);
+                if (BuildUINodeRecursive(topNode, uiNode, groupedByParent))
+                {
+                    // Добавляем только если у ноды есть материалы в поддереве
+                    Objects3DTreeView.Items.Add(uiNode);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Находим все ноды верхнего уровня (ROOTNODE или другие контейнеры)
+        /// </summary>
+        private List<PSSGNode> FindTopLevelNodes()
+        {
+            var topNodes = new List<PSSGNode>();
+
+            // Сначала ищем ROOTNODE
+            var rootNodes = FindAllNodesByName(rootNode, "ROOTNODE");
+            if (rootNodes.Count > 0)
+            {
+                topNodes.AddRange(rootNodes);
+                return topNodes;
+            }
+
+            // Если нет ROOTNODE, берем детей корня с id атрибутом
+            foreach (var child in rootNode.Children)
+            {
+                if (child.Attributes.ContainsKey("id"))
+                    topNodes.Add(child);
+            }
+
+            return topNodes;
+        }
+
+        /// <summary>
+        /// Рекурсивное построение UI ноды с фильтрацией "значимых" нод
+        /// </summary>
+        private bool BuildUINodeRecursive(PSSGNode pssgNode, TreeViewItem uiNode, Dictionary<PSSGNode, List<MaterialWithPath>> groupedByParent)
+        {
+            bool hasContent = false;
+
+            // Проверяем: есть ли для этой ноды материалы?
+            if (groupedByParent.ContainsKey(pssgNode))
+            {
+                var materialsForNode = groupedByParent[pssgNode];
+
+                // Создаем папку Materials
+                var materialsFolder = new TreeViewItem
+                {
+                    Header = "Materials",
+                    IsExpanded = false
+                };
+
+                // Добавляем материалы
+                foreach (var material in materialsForNode)
+                {
+                    string materialName = !string.IsNullOrEmpty(material.ShaderId)
+                        ? material.ShaderId
+                        : $"Material ({material.GeometryId})";
+
+                    var materialItem = new TreeViewItem
+                    {
+                        Header = materialName,
+                        Tag = material,
+                        IsExpanded = false
+                    };
+
+                    // Добавляем текстуры если есть
+                    if (!string.IsNullOrEmpty(material.ShaderId) &&
+                        shaders3D.TryGetValue(material.ShaderId, out var shader) &&
+                        shader.Textures.Count > 0)
+                    {
+                        var texturesFolder = new TreeViewItem
+                        {
+                            Header = "Textures",
+                            IsExpanded = false
+                        };
+
+                        foreach (string texture in shader.Textures)
+                        {
+                            texturesFolder.Items.Add(new TreeViewItem
+                            {
+                                Header = texture,
+                                Tag = texture
+                            });
+                        }
+
+                        materialItem.Items.Add(texturesFolder);
+                    }
+
+                    materialsFolder.Items.Add(materialItem);
+                }
+
+                uiNode.Items.Add(materialsFolder);
+                hasContent = true;
+            }
+
+            // Рекурсивно обрабатываем детей
+            foreach (var child in pssgNode.Children)
+            {
+                // Проверяем: значима ли эта нода?
+                if (IsSignificantNode(child, groupedByParent))
+                {
+                    var childUI = CreateUINode(child);
+
+                    if (BuildUINodeRecursive(child, childUI, groupedByParent))
+                    {
+                        uiNode.Items.Add(childUI);
+                        hasContent = true;
+                    }
+                }
+            }
+
+            return hasContent;
+        }
+
+        /// <summary>
+        /// Проверяет значима ли нода (есть ли у неё или её детей материалы)
+        /// </summary>
+        private bool IsSignificantNode(PSSGNode node, Dictionary<PSSGNode, List<MaterialWithPath>> groupedByParent)
+        {
+            // Нода значима если у неё есть id
+            if (!node.Attributes.ContainsKey("id"))
+                return false;
+
+            // Игнорируем служебные ноды
+            if (node.Name == "SHADERINSTANCE" || node.Name == "TEXTURE" ||
+                node.Name == "DATABLOCK" || node.Name == "RENDERDATASOURCE")
+                return false;
+
+            // У самой ноды есть материалы?
+            if (groupedByParent.ContainsKey(node))
                 return true;
-            
-            // Проверяем наличие RENDERINSTANCESOURCE child
-            if (node.Children.Any(c => c.Name == "RENDERINSTANCESOURCE"))
-                return true;
-                
+
+            // У детей есть материалы?
+            return HasMaterialsInSubtree(node, groupedByParent);
+        }
+
+        /// <summary>
+        /// Проверяет есть ли материалы в поддереве
+        /// </summary>
+        private bool HasMaterialsInSubtree(PSSGNode node, Dictionary<PSSGNode, List<MaterialWithPath>> groupedByParent)
+        {
+            foreach (var child in node.Children)
+            {
+                if (groupedByParent.ContainsKey(child))
+                    return true;
+
+                if (HasMaterialsInSubtree(child, groupedByParent))
+                    return true;
+            }
+
             return false;
         }
 
         /// <summary>
-        /// Проверяет является ли нода группирующим узлом (контейнером)
+        /// Создание UI ноды для TreeView (без цветов)
         /// </summary>
-        private bool IsGroupNode(PSSGNode node)
+        private TreeViewItem CreateUINode(PSSGNode pssgNode)
         {
-            // Проверяем наличие id атрибута и дочерних нод
-            if (!node.Attributes.ContainsKey("id"))
-                return false;
+            string displayName = GetAttributeValue(pssgNode, "nickname", "");
+            if (string.IsNullOrEmpty(displayName))
+                displayName = GetAttributeValue(pssgNode, "id", pssgNode.Name);
 
-            // Проверяем что есть дочерние элементы
-            if (node.Children.Count == 0)
-                return false;
-
-            // Игнорируем некоторые специфичные ноды
-            if (node.Name == "SHADERINSTANCE" || node.Name == "TEXTURE" || 
-                node.Name == "DATABLOCK" || node.Name == "RENDERDATASOURCE")
-                return false;
-
-            return true;
+            return new TreeViewItem
+            {
+                Header = displayName,
+                Tag = new Pssg3DNode
+                {
+                    Id = GetAttributeValue(pssgNode, "id", ""),
+                    Node = pssgNode,
+                    Type = pssgNode.Name
+                },
+                IsExpanded = false
+            };
         }
 
         /// <summary>
-        /// Рекурсивная обработка узлов дерева (универсальная версия)
-        /// </summary>
-        private void ProcessNode(PSSGNode pssgNode, TreeViewItem parentItem)
-        {
-            foreach (var child in pssgNode.Children)
-            {
-                // Проверяем является ли нода render instance
-                bool isRenderInstance = IsRenderInstance(child);
-                
-                // Проверяем является ли нода группирующим узлом
-                bool isGroupNode = IsGroupNode(child);
-
-                if (!isRenderInstance && !isGroupNode)
-                    continue;
-
-                string id = GetAttributeValue(child, "id", "");
-                string nickname = GetAttributeValue(child, "nickname", "");
-
-                if (string.IsNullOrEmpty(id)) continue;
-
-                string displayName = !string.IsNullOrEmpty(nickname) ? nickname : id;
-
-                // Создаем узел дерева
-                var nodeItem = new TreeViewItem
-                {
-                    Header = displayName,
-                    Tag = new Pssg3DNode
-                    {
-                        Id = id,
-                        Node = child,
-                        IsRenderNode = isRenderInstance,
-                        Type = child.Name
-                    },
-                    IsExpanded = false
-                };
-
-                // Устанавливаем цвет для render nodes
-                if (isRenderInstance)
-                {
-                    nodeItem.Foreground = new SolidColorBrush(Color.FromRgb(0, 102, 204)); // #0066cc
-                }
-
-                parentItem.Items.Add(nodeItem);
-
-                // Если это render node, добавляем материалы
-                if (isRenderInstance)
-                {
-                    // Добавляем узел "Materials"
-                    var materialsItem = new TreeViewItem
-                    {
-                        Header = "Materials",
-                        Tag = "materials",
-                        IsExpanded = false,
-                        Foreground = new SolidColorBrush(Color.FromRgb(0, 51, 102)),
-                        FontWeight = FontWeights.Bold
-                    };
-                    nodeItem.Items.Add(materialsItem);
-
-                    // Добавляем материалы
-                    AddMaterialsToNode(child, materialsItem);
-
-                    // Проверяем LOD уровни
-                    var lodInstancesNode = FindChildByName(child, "LODRENDERINSTANCES");
-                    if (lodInstancesNode != null)
-                    {
-                        var lodLevels = lodInstancesNode.Children.Where(c => c.Name == "LODRENDERINSTANCELIST").ToList();
-                        
-                        for (int i = 0; i < lodLevels.Count; i++)
-                        {
-                            var lodLevel = lodLevels[i];
-                            string lodValue = GetAttributeValue(lodLevel, "lod", $"{i}");
-
-                            var lodLevelItem = new TreeViewItem
-                            {
-                                Header = $"lod{i + 1} ({lodValue})",
-                                Tag = new Pssg3DNode
-                                {
-                                    Id = $"{id}_lod{i + 1}",
-                                    Node = lodLevel,
-                                    IsRenderNode = true,
-                                    Type = "LOD_LEVEL",
-                                    LodValue = lodValue
-                                },
-                                IsExpanded = false
-                            };
-                            nodeItem.Items.Add(lodLevelItem);
-
-                            // Добавляем материалы для LOD уровня
-                            var lodMaterialsItem = new TreeViewItem
-                            {
-                                Header = "Materials",
-                                Tag = "materials",
-                                IsExpanded = false,
-                                Foreground = new SolidColorBrush(Color.FromRgb(0, 51, 102)),
-                                FontWeight = FontWeights.Bold
-                            };
-                            lodLevelItem.Items.Add(lodMaterialsItem);
-                            AddMaterialsToNode(lodLevel, lodMaterialsItem);
-                        }
-                    }
-                }
-                else if (isGroupNode)
-                {
-                    // Рекурсивно обрабатываем дочерние узлы группы
-                    ProcessNode(child, nodeItem);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Добавление материалов к узлу (универсальная версия)
-        /// </summary>
-        private void AddMaterialsToNode(PSSGNode node, TreeViewItem materialsItem)
-        {
-            // Ищем все дочерние ноды которые являются render instances
-            var renderInstances = node.Children.Where(c => IsRenderInstance(c)).ToList();
-            
-            if (renderInstances.Count == 0) return;
-
-            // Отслеживаем уже обработанные материалы
-            var processedMaterials = new Dictionary<string, bool>();
-
-            foreach (var instance in renderInstances)
-            {
-                string shaderId = GetAttributeValue(instance, "shader", "").TrimStart('#');
-                if (string.IsNullOrEmpty(shaderId)) continue;
-
-                // Пропускаем дубликаты
-                if (processedMaterials.ContainsKey(shaderId))
-                    continue;
-
-                processedMaterials[shaderId] = true;
-
-                // Находим source reference
-                var sourceRef = FindChildByName(instance, "RENDERINSTANCESOURCE");
-                if (sourceRef == null) continue;
-
-                string sourceId = GetAttributeValue(sourceRef, "source", "").TrimStart('#');
-                if (string.IsNullOrEmpty(sourceId)) continue;
-
-                // Находим geometry block для этого source
-                string geometryId = FindGeometryForSource(sourceId);
-                if (string.IsNullOrEmpty(geometryId)) continue;
-
-                // Создаем узел материала
-                var material = new Pssg3DMaterial
-                {
-                    ShaderId = shaderId,
-                    GeometryId = geometryId,
-                    SourceId = sourceId,
-                    InstanceNode = instance,
-                    ParentNode = node
-                };
-
-                var materialItem = new TreeViewItem
-                {
-                    Header = shaderId,
-                    Tag = material,
-                    IsExpanded = false
-                };
-                materialsItem.Items.Add(materialItem);
-
-                // Добавляем текстуры если доступны
-                if (shaders3D.TryGetValue(shaderId, out var shader) && shader.Textures.Count > 0)
-                {
-                    var texturesItem = new TreeViewItem
-                    {
-                        Header = "Textures",
-                        Tag = "textures",
-                        IsExpanded = false,
-                        Foreground = new SolidColorBrush(Color.FromRgb(0, 102, 0))
-                    };
-                    materialItem.Items.Add(texturesItem);
-
-                    foreach (string texture in shader.Textures)
-                    {
-                        texturesItem.Items.Add(new TreeViewItem
-                        {
-                            Header = texture,
-                            Tag = texture
-                        });
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Поиск geometry block для source
-        /// </summary>
-        private string FindGeometryForSource(string sourceId)
-        {
-            if (string.IsNullOrEmpty(sourceId)) return null;
-
-            sourceId = sourceId.TrimStart('#');
-
-            // Прямое совпадение
-            if (renderSourceMap.TryGetValue(sourceId, out string value))
-                return value;
-
-            // Поиск по началу ключа
-            var possibleMatch = renderSourceMap.FirstOrDefault(entry => entry.Key.StartsWith(sourceId + "_"));
-            if (!string.IsNullOrEmpty(possibleMatch.Key))
-                return possibleMatch.Value;
-
-            // Поиск по подстроке
-            foreach (var entry in renderSourceMap)
-            {
-                string[] parts = entry.Key.Split('_');
-                if (parts.Contains(sourceId))
-                    return entry.Value;
-            }
-
-            // Поиск в renderSources напрямую
-            if (renderSources.TryGetValue(sourceId, out var renderSource))
-            {
-                if (renderSource.DataBlockIds.Count > 0)
-                    return renderSource.DataBlockIds[0];
-            }
-
-            return null;
-        }
-
-        /// <summary>
-        /// Показать информацию о служебном узле (materials, textures)
+        /// Показать информацию о служебном узле
         /// </summary>
         private void Show3DTagDetails(string tag)
         {
@@ -566,27 +518,19 @@ namespace PSSGEditor
             ModelInfoPanel.Visibility = Visibility.Visible;
             No3DObjectText.Visibility = Visibility.Collapsed;
 
-            switch (tag)
+            if (tag == "materials")
             {
-                case "materials":
-                    ModelInfoText.Text = "Materials Section\n";
-                    ModelInfoText.Text += "Contains a list of material shaders used by this model.";
-                    break;
-                case "textures":
-                    ModelInfoText.Text = "Textures Section\n";
-                    ModelInfoText.Text += "Contains a list of textures used by this material.";
-                    break;
-                default:
-                    if (tag != null && tag.Contains(".tga", StringComparison.OrdinalIgnoreCase))
-                    {
-                        ModelInfoText.Text = $"Texture: {tag}\n";
-                        ModelInfoText.Text += "Textures are used to provide surface details for 3D models.";
-                    }
-                    else
-                    {
-                        ModelInfoText.Text = "Select an item to view details";
-                    }
-                    break;
+                ModelInfoText.Text = "Materials Section\n";
+                ModelInfoText.Text += "Contains a list of material shaders used by this object.";
+            }
+            else if (tag != null && tag.Contains(".tga", StringComparison.OrdinalIgnoreCase))
+            {
+                ModelInfoText.Text = $"Texture: {tag}\n";
+                ModelInfoText.Text += "Textures are used to provide surface details for 3D models.";
+            }
+            else
+            {
+                ModelInfoText.Text = "Select an item to view details";
             }
         }
 
@@ -608,10 +552,9 @@ namespace PSSGEditor
             if (transformNode != null && transformNode.Data != null && transformNode.Data.Length > 0)
             {
                 ModelInfoText.Text += "\nTransform Matrix:\n";
-                
+
                 try
                 {
-                    // Пробуем прочитать как текст
                     string transformText = System.Text.Encoding.UTF8.GetString(transformNode.Data);
                     string[] values = transformText.Trim().Split(
                         new[] { ' ', '\r', '\n', '\t' }, StringSplitOptions.RemoveEmptyEntries);
@@ -626,7 +569,6 @@ namespace PSSGEditor
                 }
                 catch
                 {
-                    // Если не получилось прочитать как текст, просто скажем что есть трансформация
                     ModelInfoText.Text += "  [Transform data present]\n";
                 }
             }
@@ -636,7 +578,7 @@ namespace PSSGEditor
             if (boundingBoxNode != null && boundingBoxNode.Data != null && boundingBoxNode.Data.Length > 0)
             {
                 ModelInfoText.Text += "\nBounding Box:\n";
-                
+
                 try
                 {
                     string boxText = System.Text.Encoding.UTF8.GetString(boundingBoxNode.Data);
@@ -654,86 +596,12 @@ namespace PSSGEditor
                     ModelInfoText.Text += "  [Bounding box data present]\n";
                 }
             }
-
-            // Показываем LOD информацию если есть
-            if (node.Type == "LOD_LEVEL" && !string.IsNullOrEmpty(node.LodValue))
-            {
-                ModelInfoText.Text += $"\nLOD Value: {node.LodValue}\n";
-                ModelInfoText.Text += "LOD (Level of Detail) is used to show different mesh detail\n";
-                ModelInfoText.Text += "levels based on distance from the camera.\n";
-                ModelInfoText.Text += "Lower values indicate models used at greater distances.\n";
-            }
-        }
-
-        /// <summary>
-        /// Отрисовка 3D объекта (render node)
-        /// </summary>
-        private void Render3DObject(Pssg3DNode node)
-        {
-            try
-            {
-                StatusText.Text = $"Rendering 3D object: {node.Id}...";
-
-                int totalVertices = 0;
-                int totalTriangles = 0;
-
-                ModelInfoText.Text = $"{node.Id}\n";
-                ModelInfoText.Text += $"Type: {node.Type}\n";
-
-                // Собираем материалы
-                var materials = new List<Pssg3DMaterial>();
-                CollectMaterials(node.Node, materials);
-
-                if (materials.Count == 0)
-                {
-                    ModelInfoText.Text += "No materials found.";
-                    StatusText.Text = "No geometry data found";
-                    return;
-                }
-
-                ModelInfoText.Text += $"Materials: {materials.Count}\n";
-
-                // Отрисовываем каждый материал
-                foreach (var material in materials)
-                {
-                    var model = Create3DMeshFromMaterial(material);
-                    if (model != null)
-                    {
-                        Model3DContainer.Children.Add(new ModelVisual3D { Content = model });
-
-                        // Подсчет вертексов и треугольников
-                        if (model.Children.Count > 0 && model.Children[0] is GeometryModel3D geoModel &&
-                            geoModel.Geometry is MeshGeometry3D mesh)
-                        {
-                            totalVertices += mesh.Positions.Count;
-                            totalTriangles += mesh.TriangleIndices.Count / 3;
-                        }
-                    }
-                }
-
-                ModelInfoText.Text += $"Total Vertices: {totalVertices}\n";
-                ModelInfoText.Text += $"Total Triangles: {totalTriangles}";
-
-                // Добавляем систему координат
-                Model3DContainer.Children.Add(new CoordinateSystemVisual3D { ArrowLengths = 2 });
-
-                // Настраиваем камеру
-                Model3DView.ResetCamera();
-                Model3DView.ZoomExtents();
-
-                StatusText.Text = "3D object rendered successfully";
-            }
-            catch (Exception ex)
-            {
-                StatusText.Text = $"Error rendering 3D object: {ex.Message}";
-                ModelInfoText.Text = $"Error: {ex.Message}";
-            }
         }
 
         /// <summary>
         /// Отрисовка отдельного материала
         /// </summary>
-        private void RenderMaterial(Pssg3DMaterial material)
+        private void RenderMaterial(MaterialWithPath material)
         {
             try
             {
@@ -757,7 +625,9 @@ namespace PSSGEditor
                     }
 
                     // Добавляем информацию о текстурах
-                    if (shaders3D.TryGetValue(material.ShaderId, out var shader) && shader.Textures.Count > 0)
+                    if (!string.IsNullOrEmpty(material.ShaderId) &&
+                        shaders3D.TryGetValue(material.ShaderId, out var shader) &&
+                        shader.Textures.Count > 0)
                     {
                         ModelInfoText.Text += $"\nTextures: {shader.Textures.Count}";
                         for (int i = 0; i < Math.Min(3, shader.Textures.Count); i++)
@@ -786,52 +656,9 @@ namespace PSSGEditor
         }
 
         /// <summary>
-        /// Сбор материалов из ноды (универсальная версия)
-        /// </summary>
-        private void CollectMaterials(PSSGNode node, List<Pssg3DMaterial> materials)
-        {
-            // Ищем все дочерние ноды которые являются render instances
-            foreach (var child in node.Children)
-            {
-                if (IsRenderInstance(child))
-                {
-                    var material = new Pssg3DMaterial
-                    {
-                        InstanceNode = child,
-                        ParentNode = node
-                    };
-
-                    material.ShaderId = GetAttributeValue(child, "shader", "").TrimStart('#');
-
-                    // Находим source reference
-                    var sourceRef = FindChildByName(child, "RENDERINSTANCESOURCE");
-                    if (sourceRef != null)
-                    {
-                        string sourceId = GetAttributeValue(sourceRef, "source", "").TrimStart('#');
-                        material.SourceId = sourceId;
-
-                        // Находим geometry block
-                        string geometryId = FindGeometryForSource(sourceId);
-                        if (!string.IsNullOrEmpty(geometryId) && geometry3DBlocks.TryGetValue(geometryId, out var block))
-                        {
-                            material.GeometryId = geometryId;
-                            material.GeometryBlock = block;
-                            
-                            // Находим render source
-                            if (renderSources.TryGetValue(sourceId, out var renderSource))
-                                material.RenderSource = renderSource;
-
-                            materials.Add(material);
-                        }
-                    }
-                }
-            }
-        }
-
-        /// <summary>
         /// Создание 3D mesh из материала
         /// </summary>
-        private Model3DGroup Create3DMeshFromMaterial(Pssg3DMaterial material)
+        private Model3DGroup Create3DMeshFromMaterial(MaterialWithPath material)
         {
             try
             {
@@ -912,7 +739,7 @@ namespace PSSGEditor
                     Add3DWireframe(group, indices, positions);
 
                 // Применяем трансформацию если есть
-                var transform = Find3DTransform(material.ParentNode);
+                var transform = Find3DTransform(material);
                 if (transform != null)
                     group.Transform = transform;
 
@@ -926,15 +753,17 @@ namespace PSSGEditor
         }
 
         /// <summary>
-        /// Поиск трансформации в ноде
+        /// Поиск трансформации в материале (идем вверх по pathToRoot)
         /// </summary>
-        private Transform3D Find3DTransform(PSSGNode node)
+        private Transform3D Find3DTransform(MaterialWithPath material)
         {
-            if (node == null) return null;
-
-            var transformNode = FindChildByName(node, "TRANSFORM");
-            if (transformNode != null)
-                return PssgMeshBuilder.ParseTransform(transformNode);
+            // Идем вверх по пути к корню
+            foreach (var node in material.PathToRoot.AsEnumerable().Reverse())
+            {
+                var transformNode = FindChildByName(node, "TRANSFORM");
+                if (transformNode != null)
+                    return PssgMeshBuilder.ParseTransform(transformNode);
+            }
 
             return null;
         }
@@ -981,7 +810,7 @@ namespace PSSGEditor
         {
             double thickness = 0.01;
             Vector3D dir = p2 - p1;
-            
+
             Vector3D up = new Vector3D(0, 0, 1);
             if (Math.Abs(Vector3D.DotProduct(dir, up)) > 0.9)
                 up = new Vector3D(1, 0, 0);
@@ -1168,9 +997,7 @@ namespace PSSGEditor
     {
         public string Id { get; set; }
         public PSSGNode Node { get; set; }
-        public bool IsRenderNode { get; set; }
         public string Type { get; set; }
-        public string LodValue { get; set; }
     }
 
     public class Pssg3DGeometryBlock
@@ -1191,22 +1018,25 @@ namespace PSSGEditor
         public PSSGNode IndexSourceNode { get; set; }
     }
 
-    public class Pssg3DMaterial
-    {
-        public string ShaderId { get; set; }
-        public string GeometryId { get; set; }
-        public string SourceId { get; set; }
-        public Pssg3DGeometryBlock GeometryBlock { get; set; }
-        public Pssg3DRenderSource RenderSource { get; set; }
-        public PSSGNode InstanceNode { get; set; }
-        public PSSGNode ParentNode { get; set; }
-    }
-
     public class Pssg3DShader
     {
         public string Id { get; set; }
         public string ShaderGroup { get; set; }
         public List<string> Textures { get; set; } = new List<string>();
+    }
+
+    /// <summary>
+    /// Материал с полным путем к корню для трансформаций
+    /// </summary>
+    public class MaterialWithPath
+    {
+        public PSSGNode InstanceNode { get; set; }
+        public string SourceId { get; set; }
+        public string GeometryId { get; set; }
+        public string ShaderId { get; set; }
+        public List<PSSGNode> PathToRoot { get; set; }
+        public Pssg3DRenderSource RenderSource { get; set; }
+        public Pssg3DGeometryBlock GeometryBlock { get; set; }
     }
 
     #endregion

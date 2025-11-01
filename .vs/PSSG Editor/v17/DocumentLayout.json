@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\AS\\source\\repos\\PromixFlame-PSSG-Editor\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{91C8596E-0C48-4ED7-A8FA-BC6950C20064}|PSSG Editor.csproj|c:\\users\\as\\source\\repos\\promixflame-pssg-editor\\mainwindow.3dviewer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{91C8596E-0C48-4ED7-A8FA-BC6950C20064}|PSSG Editor.csproj|solutionrelative:mainwindow.3dviewer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{91C8596E-0C48-4ED7-A8FA-BC6950C20064}|PSSG Editor.csproj|c:\\users\\as\\source\\repos\\promixflame-pssg-editor\\mainwindow.texturehandlers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{91C8596E-0C48-4ED7-A8FA-BC6950C20064}|PSSG Editor.csproj|solutionrelative:mainwindow.texturehandlers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -27,19 +31,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "MainWindow.3DViewer.cs",
+              "DocumentMoniker": "C:\\Users\\AS\\source\\repos\\PromixFlame-PSSG-Editor\\MainWindow.3DViewer.cs",
+              "RelativeDocumentMoniker": "MainWindow.3DViewer.cs",
+              "ToolTip": "C:\\Users\\AS\\source\\repos\\PromixFlame-PSSG-Editor\\MainWindow.3DViewer.cs",
+              "RelativeToolTip": "MainWindow.3DViewer.cs",
+              "ViewState": "AgIAAPADAAAAAAAAAAAxwBIEAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T21:52:18.197Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "MainWindow.TextureHandlers.cs",
               "DocumentMoniker": "C:\\Users\\AS\\source\\repos\\PromixFlame-PSSG-Editor\\MainWindow.TextureHandlers.cs",
               "RelativeDocumentMoniker": "MainWindow.TextureHandlers.cs",
               "ToolTip": "C:\\Users\\AS\\source\\repos\\PromixFlame-PSSG-Editor\\MainWindow.TextureHandlers.cs",
               "RelativeToolTip": "MainWindow.TextureHandlers.cs",
-              "ViewState": "AgIAAFgBAAAAAAAAAAAewHoBAABRAAAAAAAAAA==",
+              "ViewState": "AgIAAFgBAAAAAAAAAAAewHgBAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-30T18:31:54.826Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MainWindow.MenuHandlers.cs",
               "DocumentMoniker": "C:\\Users\\AS\\source\\repos\\PromixFlame-PSSG-Editor\\MainWindow.MenuHandlers.cs",
               "RelativeDocumentMoniker": "MainWindow.MenuHandlers.cs",
@@ -51,7 +68,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "PSSGFormat.cs",
               "DocumentMoniker": "C:\\Users\\AS\\source\\repos\\PromixFlame-PSSG-Editor\\PSSGFormat.cs",
               "RelativeDocumentMoniker": "PSSGFormat.cs",

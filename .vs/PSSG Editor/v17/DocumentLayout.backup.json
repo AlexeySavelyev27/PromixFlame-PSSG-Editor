@@ -1,17 +1,17 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\AS\\source\\repos\\F12012TrackEditor\\PSSG Editor\\",
+  "WorkspaceRootPath": "C:\\Users\\AS\\source\\repos\\PromixFlame-PSSG-Editor\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{91C8596E-0C48-4ED7-A8FA-BC6950C20064}|PSSG Editor.csproj|c:\\users\\as\\source\\repos\\f12012trackeditor\\pssg editor\\mainwindow.texturehandlers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{91C8596E-0C48-4ED7-A8FA-BC6950C20064}|PSSG Editor.csproj|c:\\users\\as\\source\\repos\\promixflame-pssg-editor\\mainwindow.texturehandlers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{91C8596E-0C48-4ED7-A8FA-BC6950C20064}|PSSG Editor.csproj|solutionrelative:mainwindow.texturehandlers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{91C8596E-0C48-4ED7-A8FA-BC6950C20064}|PSSG Editor.csproj|c:\\users\\as\\source\\repos\\f12012trackeditor\\pssg editor\\mainwindow.menuhandlers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{91C8596E-0C48-4ED7-A8FA-BC6950C20064}|PSSG Editor.csproj|c:\\users\\as\\source\\repos\\promixflame-pssg-editor\\mainwindow.menuhandlers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{91C8596E-0C48-4ED7-A8FA-BC6950C20064}|PSSG Editor.csproj|solutionrelative:mainwindow.menuhandlers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{91C8596E-0C48-4ED7-A8FA-BC6950C20064}|PSSG Editor.csproj|c:\\users\\as\\source\\repos\\f12012trackeditor\\pssg editor\\pssgformat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{91C8596E-0C48-4ED7-A8FA-BC6950C20064}|PSSG Editor.csproj|c:\\users\\as\\source\\repos\\promixflame-pssg-editor\\pssgformat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{91C8596E-0C48-4ED7-A8FA-BC6950C20064}|PSSG Editor.csproj|solutionrelative:pssgformat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -28,11 +28,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MainWindow.TextureHandlers.cs",
-              "DocumentMoniker": "C:\\Users\\AS\\source\\repos\\F12012TrackEditor\\PSSG Editor\\MainWindow.TextureHandlers.cs",
+              "DocumentMoniker": "C:\\Users\\AS\\source\\repos\\PromixFlame-PSSG-Editor\\MainWindow.TextureHandlers.cs",
               "RelativeDocumentMoniker": "MainWindow.TextureHandlers.cs",
-              "ToolTip": "C:\\Users\\AS\\source\\repos\\F12012TrackEditor\\PSSG Editor\\MainWindow.TextureHandlers.cs",
+              "ToolTip": "C:\\Users\\AS\\source\\repos\\PromixFlame-PSSG-Editor\\MainWindow.TextureHandlers.cs",
               "RelativeToolTip": "MainWindow.TextureHandlers.cs",
-              "ViewState": "AgIAAFgBAAAAAAAAAAAewG0BAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAFgBAAAAAAAAAAAewHoBAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-30T18:31:54.826Z",
               "EditorCaption": ""
@@ -41,9 +41,9 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "MainWindow.MenuHandlers.cs",
-              "DocumentMoniker": "C:\\Users\\AS\\source\\repos\\F12012TrackEditor\\PSSG Editor\\MainWindow.MenuHandlers.cs",
+              "DocumentMoniker": "C:\\Users\\AS\\source\\repos\\PromixFlame-PSSG-Editor\\MainWindow.MenuHandlers.cs",
               "RelativeDocumentMoniker": "MainWindow.MenuHandlers.cs",
-              "ToolTip": "C:\\Users\\AS\\source\\repos\\F12012TrackEditor\\PSSG Editor\\MainWindow.MenuHandlers.cs",
+              "ToolTip": "C:\\Users\\AS\\source\\repos\\PromixFlame-PSSG-Editor\\MainWindow.MenuHandlers.cs",
               "RelativeToolTip": "MainWindow.MenuHandlers.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -53,9 +53,9 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "PSSGFormat.cs",
-              "DocumentMoniker": "C:\\Users\\AS\\source\\repos\\F12012TrackEditor\\PSSG Editor\\PSSGFormat.cs",
+              "DocumentMoniker": "C:\\Users\\AS\\source\\repos\\PromixFlame-PSSG-Editor\\PSSGFormat.cs",
               "RelativeDocumentMoniker": "PSSGFormat.cs",
-              "ToolTip": "C:\\Users\\AS\\source\\repos\\F12012TrackEditor\\PSSG Editor\\PSSGFormat.cs",
+              "ToolTip": "C:\\Users\\AS\\source\\repos\\PromixFlame-PSSG-Editor\\PSSGFormat.cs",
               "RelativeToolTip": "PSSGFormat.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

@@ -96,7 +96,7 @@ namespace PSSGEditor
         }
 
         /// <summary>
-        /// Построение дерева 3D объектов из PSSG структуры (улучшенная версия)
+        /// Построение дерева 3D объектов из PSSG структуры (универсальная версия)
         /// </summary>
         public void Build3DObjectsTree()
         {
@@ -297,119 +297,160 @@ namespace PSSGEditor
         }
 
         /// <summary>
-        /// Рекурсивная обработка узлов дерева (из старой программы)
+        /// Проверяет является ли нода render instance (по атрибутам, а не по имени)
+        /// </summary>
+        private bool IsRenderInstance(PSSGNode node)
+        {
+            // Проверяем наличие shader атрибута
+            if (node.Attributes.ContainsKey("shader"))
+                return true;
+            
+            // Проверяем наличие RENDERINSTANCESOURCE child
+            if (node.Children.Any(c => c.Name == "RENDERINSTANCESOURCE"))
+                return true;
+                
+            return false;
+        }
+
+        /// <summary>
+        /// Проверяет является ли нода группирующим узлом (контейнером)
+        /// </summary>
+        private bool IsGroupNode(PSSGNode node)
+        {
+            // Проверяем наличие id атрибута и дочерних нод
+            if (!node.Attributes.ContainsKey("id"))
+                return false;
+
+            // Проверяем что есть дочерние элементы
+            if (node.Children.Count == 0)
+                return false;
+
+            // Игнорируем некоторые специфичные ноды
+            if (node.Name == "SHADERINSTANCE" || node.Name == "TEXTURE" || 
+                node.Name == "DATABLOCK" || node.Name == "RENDERDATASOURCE")
+                return false;
+
+            return true;
+        }
+
+        /// <summary>
+        /// Рекурсивная обработка узлов дерева (универсальная версия)
         /// </summary>
         private void ProcessNode(PSSGNode pssgNode, TreeViewItem parentItem)
         {
             foreach (var child in pssgNode.Children)
             {
-                if (child.Name == "NODE" || child.Name == "RENDERNODE" || child.Name == "LODVISIBLERENDERNODE")
+                // Проверяем является ли нода render instance
+                bool isRenderInstance = IsRenderInstance(child);
+                
+                // Проверяем является ли нода группирующим узлом
+                bool isGroupNode = IsGroupNode(child);
+
+                if (!isRenderInstance && !isGroupNode)
+                    continue;
+
+                string id = GetAttributeValue(child, "id", "");
+                string nickname = GetAttributeValue(child, "nickname", "");
+
+                if (string.IsNullOrEmpty(id)) continue;
+
+                string displayName = !string.IsNullOrEmpty(nickname) ? nickname : id;
+
+                // Создаем узел дерева
+                var nodeItem = new TreeViewItem
                 {
-                    string id = GetAttributeValue(child, "id", "");
-                    string nickname = GetAttributeValue(child, "nickname", "");
-
-                    if (string.IsNullOrEmpty(id)) continue;
-
-                    string displayName = !string.IsNullOrEmpty(nickname) ? nickname : id;
-                    bool isModelNode = (child.Name == "RENDERNODE" || child.Name == "LODVISIBLERENDERNODE");
-
-                    // Создаем узел дерева
-                    var nodeItem = new TreeViewItem
+                    Header = displayName,
+                    Tag = new Pssg3DNode
                     {
-                        Header = displayName,
-                        Tag = new Pssg3DNode
-                        {
-                            Id = id,
-                            Node = child,
-                            IsRenderNode = isModelNode,
-                            Type = child.Name
-                        },
-                        IsExpanded = false
+                        Id = id,
+                        Node = child,
+                        IsRenderNode = isRenderInstance,
+                        Type = child.Name
+                    },
+                    IsExpanded = false
+                };
+
+                // Устанавливаем цвет для render nodes
+                if (isRenderInstance)
+                {
+                    nodeItem.Foreground = new SolidColorBrush(Color.FromRgb(0, 102, 204)); // #0066cc
+                }
+
+                parentItem.Items.Add(nodeItem);
+
+                // Если это render node, добавляем материалы
+                if (isRenderInstance)
+                {
+                    // Добавляем узел "Materials"
+                    var materialsItem = new TreeViewItem
+                    {
+                        Header = "Materials",
+                        Tag = "materials",
+                        IsExpanded = false,
+                        Foreground = new SolidColorBrush(Color.FromRgb(0, 51, 102)),
+                        FontWeight = FontWeights.Bold
                     };
+                    nodeItem.Items.Add(materialsItem);
 
-                    // Устанавливаем цвет для render nodes (без Bold)
-                    if (isModelNode)
+                    // Добавляем материалы
+                    AddMaterialsToNode(child, materialsItem);
+
+                    // Проверяем LOD уровни
+                    var lodInstancesNode = FindChildByName(child, "LODRENDERINSTANCES");
+                    if (lodInstancesNode != null)
                     {
-                        nodeItem.Foreground = new SolidColorBrush(Color.FromRgb(0, 102, 204)); // #0066cc
-                    }
-
-                    parentItem.Items.Add(nodeItem);
-
-                    // Если это render node, добавляем материалы
-                    if (isModelNode)
-                    {
-                        // Добавляем узел "Materials"
-                        var materialsItem = new TreeViewItem
+                        var lodLevels = lodInstancesNode.Children.Where(c => c.Name == "LODRENDERINSTANCELIST").ToList();
+                        
+                        for (int i = 0; i < lodLevels.Count; i++)
                         {
-                            Header = "Materials",
-                            Tag = "materials",
-                            IsExpanded = false,
-                            Foreground = new SolidColorBrush(Color.FromRgb(0, 51, 102)),
-                            FontWeight = FontWeights.Bold
-                        };
-                        nodeItem.Items.Add(materialsItem);
+                            var lodLevel = lodLevels[i];
+                            string lodValue = GetAttributeValue(lodLevel, "lod", $"{i}");
 
-                        // Добавляем материалы
-                        AddMaterialsToNode(child, materialsItem);
-
-                        // Если это LOD node, добавляем LOD уровни
-                        if (child.Name == "LODVISIBLERENDERNODE")
-                        {
-                            var lodInstancesNode = FindChildByName(child, "LODRENDERINSTANCES");
-                            if (lodInstancesNode != null)
+                            var lodLevelItem = new TreeViewItem
                             {
-                                var lodLevels = lodInstancesNode.Children.Where(c => c.Name == "LODRENDERINSTANCELIST").ToList();
-                                
-                                for (int i = 0; i < lodLevels.Count; i++)
+                                Header = $"lod{i + 1} ({lodValue})",
+                                Tag = new Pssg3DNode
                                 {
-                                    var lodLevel = lodLevels[i];
-                                    string lodValue = GetAttributeValue(lodLevel, "lod", $"{i}");
+                                    Id = $"{id}_lod{i + 1}",
+                                    Node = lodLevel,
+                                    IsRenderNode = true,
+                                    Type = "LOD_LEVEL",
+                                    LodValue = lodValue
+                                },
+                                IsExpanded = false
+                            };
+                            nodeItem.Items.Add(lodLevelItem);
 
-                                    var lodLevelItem = new TreeViewItem
-                                    {
-                                        Header = $"lod{i + 1} ({lodValue})",
-                                        Tag = new Pssg3DNode
-                                        {
-                                            Id = $"{id}_lod{i + 1}",
-                                            Node = lodLevel,
-                                            IsRenderNode = true,
-                                            Type = "LOD_LEVEL",
-                                            LodValue = lodValue
-                                        },
-                                        IsExpanded = false
-                                    };
-                                    nodeItem.Items.Add(lodLevelItem);
-
-                                    // Добавляем материалы для LOD уровня
-                                    var lodMaterialsItem = new TreeViewItem
-                                    {
-                                        Header = "Materials",
-                                        Tag = "materials",
-                                        IsExpanded = false,
-                                        Foreground = new SolidColorBrush(Color.FromRgb(0, 51, 102)),
-                                        FontWeight = FontWeights.Bold
-                                    };
-                                    lodLevelItem.Items.Add(lodMaterialsItem);
-                                    AddMaterialsToNode(lodLevel, lodMaterialsItem);
-                                }
-                            }
+                            // Добавляем материалы для LOD уровня
+                            var lodMaterialsItem = new TreeViewItem
+                            {
+                                Header = "Materials",
+                                Tag = "materials",
+                                IsExpanded = false,
+                                Foreground = new SolidColorBrush(Color.FromRgb(0, 51, 102)),
+                                FontWeight = FontWeights.Bold
+                            };
+                            lodLevelItem.Items.Add(lodMaterialsItem);
+                            AddMaterialsToNode(lodLevel, lodMaterialsItem);
                         }
                     }
-                    else if (child.Name == "NODE")
-                    {
-                        // Рекурсивно обрабатываем дочерние узлы
-                        ProcessNode(child, nodeItem);
-                    }
+                }
+                else if (isGroupNode)
+                {
+                    // Рекурсивно обрабатываем дочерние узлы группы
+                    ProcessNode(child, nodeItem);
                 }
             }
         }
 
         /// <summary>
-        /// Добавление материалов к узлу (из старой программы)
+        /// Добавление материалов к узлу (универсальная версия)
         /// </summary>
         private void AddMaterialsToNode(PSSGNode node, TreeViewItem materialsItem)
         {
-            var renderInstances = node.Children.Where(c => c.Name == "RENDERSTREAMINSTANCE").ToList();
+            // Ищем все дочерние ноды которые являются render instances
+            var renderInstances = node.Children.Where(c => IsRenderInstance(c)).ToList();
+            
             if (renderInstances.Count == 0) return;
 
             // Отслеживаем уже обработанные материалы
@@ -480,7 +521,7 @@ namespace PSSGEditor
         }
 
         /// <summary>
-        /// Поиск geometry block для source (из старой программы)
+        /// Поиск geometry block для source
         /// </summary>
         private string FindGeometryForSource(string sourceId)
         {
@@ -745,13 +786,14 @@ namespace PSSGEditor
         }
 
         /// <summary>
-        /// Сбор материалов из ноды
+        /// Сбор материалов из ноды (универсальная версия)
         /// </summary>
         private void CollectMaterials(PSSGNode node, List<Pssg3DMaterial> materials)
         {
+            // Ищем все дочерние ноды которые являются render instances
             foreach (var child in node.Children)
             {
-                if (child.Name == "RENDERSTREAMINSTANCE")
+                if (IsRenderInstance(child))
                 {
                     var material = new Pssg3DMaterial
                     {

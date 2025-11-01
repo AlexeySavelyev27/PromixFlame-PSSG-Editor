@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Release\net8.0-windows\win-x64\
+C:\Users\AS\source\repos\PromixFlame-PSSG-Editor\obj\Release\net8.0-windows\win-x64\
 PSSG_Editor
 none
 false
 TRACE;RELEASE;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
-C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\App.xaml
-2114460889
+C:\Users\AS\source\repos\PromixFlame-PSSG-Editor\App.xaml
+11407045341
 1-1606303973
-2394853067
+151711505568
 199-1292768167
-MainWindow.xaml;UIScene\UISceneViewerWindow.xaml;
+MainWindow.xaml;
 
 False
 

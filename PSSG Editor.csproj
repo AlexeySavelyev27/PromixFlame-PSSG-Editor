@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<!-- Имя сборки и выходного exe -->
+		<AssemblyName>PromixFlame PSSG Editor</AssemblyName>
+		<OutputType>WinExe</OutputType>
+
+		<!-- Целевая платформа: .NET 8 WPF -->
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<Nullable>disable</Nullable>
+
+		<!-- Publish as single-file without embedding full runtime -->
+		<PublishSingleFile>true</PublishSingleFile>
+		<SelfContained>false</SelfContained>
+
+		<!-- Для WPF обрезку отключаем -->
+		<PublishTrimmed>false</PublishTrimmed>
+
+		<!-- Явно указываем таргетную платформу -->
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<ApplicationIcon>icon.ico</ApplicationIcon>
+		<Win32Icon>icon.ico</Win32Icon>
+	</PropertyGroup>
+	<ItemGroup>
+	  <Content Include="icon.ico" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="HelixToolkit.Wpf" Version="2.25.0" />
+	</ItemGroup>
+</Project>

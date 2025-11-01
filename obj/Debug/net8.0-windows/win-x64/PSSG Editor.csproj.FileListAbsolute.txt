@@ -1,0 +1,29 @@
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Debug\net8.0-windows\win-x64\PSSG Editor.csproj.AssemblyReference.cache
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Debug\net8.0-windows\win-x64\UIScene\UISceneViewerWindow.baml
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Debug\net8.0-windows\win-x64\App.baml
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Debug\net8.0-windows\win-x64\MainWindow.g.cs
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Debug\net8.0-windows\win-x64\UIScene\UISceneViewerWindow.g.cs
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Debug\net8.0-windows\win-x64\App.g.cs
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Debug\net8.0-windows\win-x64\PromixFlame PSSG Editor_Content.g.cs
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Debug\net8.0-windows\win-x64\GeneratedInternalTypeHelper.g.cs
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Debug\net8.0-windows\win-x64\PromixFlame PSSG Editor_MarkupCompile.cache
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Debug\net8.0-windows\win-x64\PromixFlame PSSG Editor_MarkupCompile.lref
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\bin\Debug\net8.0-windows\win-x64\PromixFlame PSSG Editor.exe
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\bin\Debug\net8.0-windows\win-x64\PromixFlame PSSG Editor.deps.json
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\bin\Debug\net8.0-windows\win-x64\PromixFlame PSSG Editor.runtimeconfig.json
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\bin\Debug\net8.0-windows\win-x64\PromixFlame PSSG Editor.dll
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\bin\Debug\net8.0-windows\win-x64\PromixFlame PSSG Editor.pdb
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\bin\Debug\net8.0-windows\win-x64\HelixToolkit.Wpf.dll
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Debug\net8.0-windows\win-x64\MainWindow.baml
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Debug\net8.0-windows\win-x64\PromixFlame PSSG Editor.g.resources
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Debug\net8.0-windows\win-x64\PSSG Editor.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Debug\net8.0-windows\win-x64\PSSG Editor.AssemblyInfoInputs.cache
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Debug\net8.0-windows\win-x64\PSSG Editor.AssemblyInfo.cs
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Debug\net8.0-windows\win-x64\PSSG Editor.csproj.CoreCompileInputs.cache
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Debug\net8.0-windows\win-x64\PSSG Editor.sourcelink.json
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Debug\net8.0-windows\win-x64\PSSG Edi.90F4CB99.Up2Date
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Debug\net8.0-windows\win-x64\PromixFlame PSSG Editor.dll
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Debug\net8.0-windows\win-x64\refint\PromixFlame PSSG Editor.dll
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Debug\net8.0-windows\win-x64\PromixFlame PSSG Editor.pdb
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Debug\net8.0-windows\win-x64\PSSG Editor.genruntimeconfig.cache
+C:\Users\AS\source\repos\F12012TrackEditor\PSSG Editor\obj\Debug\net8.0-windows\win-x64\ref\PromixFlame PSSG Editor.dll

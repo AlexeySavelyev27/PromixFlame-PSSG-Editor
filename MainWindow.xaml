@@ -1,0 +1,288 @@
+﻿<Window x:Class="PSSGEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:PSSGEditor"
+        xmlns:helix="http://helix-toolkit.org/wpf"
+        Title="PromixFlame PSSG Editor" Height="600" Width="900">
+    <DockPanel>
+        <!-- Menu с нижним разделителем -->
+        <Border DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="0,0,0,0.3" Margin="0,0,0,0">
+            <Menu>
+                <MenuItem Header="_File">
+                    <MenuItem x:Name="OpenMenuItem" Header="_Open" Click="OpenMenuItem_Click"/>
+                    <MenuItem x:Name="SaveAsMenuItem" Header="Save _As" Click="SaveAsMenuItem_Click"/>
+                    <Separator/>
+                    <MenuItem Header="Export to _JSON" Click="ExportJsonMenuItem_Click"/>
+                    <MenuItem Header="Export _Selected Node to JSON" Click="ExportSelectedNodeJsonMenuItem_Click"/>
+                    <Separator/>
+                    <MenuItem Header="E_xit" Click="ExitMenuItem_Click"/>
+                </MenuItem>
+                <MenuItem Header="Textures">
+                    <MenuItem Header="Import Folder" Click="ImportFolderMenuItem_Click"/>
+                    <MenuItem Header="Export All Textures" Click="ExportAllTexturesMenuItem_Click"/>
+                </MenuItem>
+            </Menu>
+        </Border>
+
+        <!-- Строка статуса с верхним разделителем -->
+        <Border DockPanel.Dock="Bottom" BorderBrush="Black" BorderThickness="0,0,0,0">
+            <StatusBar>
+                <StatusBarItem x:Name="StatusBar" HorizontalContentAlignment="Stretch">
+                    <DockPanel LastChildFill="False">
+                        <TextBlock x:Name="StatusText" Text="Ready" DockPanel.Dock="Left" Margin="0,0,10,0" />
+                        <ProgressBar x:Name="LoadingProgressBar" 
+                                     Width="150" 
+                                     Height="16" 
+                                     Visibility="Collapsed" 
+                                     DockPanel.Dock="Left" />
+                    </DockPanel>
+                </StatusBarItem>
+            </StatusBar>
+        </Border>
+
+        <!-- Основная область с вкладками -->
+        <TabControl x:Name="MainTabControl">
+            <!-- 1. Nodes tab -->
+            <TabItem Header="Nodes">
+                <Grid x:Name="MainGrid" Background="Gray">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="5" />
+                            <ColumnDefinition Width="5*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition x:Name="AttributesRow" Height="*" />
+                            <RowDefinition x:Name="RawDataRow" Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <!-- TreeView для навигации по структуре -->
+                        <TreeView Grid.Column="0" Grid.RowSpan="2"
+                                  x:Name="PssgTreeView"
+                                  SelectedItemChanged="PssgTreeView_SelectedItemChanged"
+                                  Background="White"
+                                  VirtualizingStackPanel.IsVirtualizing="True"
+                                  VirtualizingStackPanel.VirtualizationMode="Recycling"
+                                  ScrollViewer.CanContentScroll="True"
+                                  Padding="2"
+                                  BorderThickness="0.6">
+                            <TreeView.Resources>
+                                <HierarchicalDataTemplate DataType="{x:Type local:PSSGNode}" ItemsSource="{Binding Children}">
+                                    <TextBlock Text="{Binding Name}" />
+                                </HierarchicalDataTemplate>
+                            </TreeView.Resources>
+                            <TreeView.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Delete Node" Click="DeleteNodeMenuItem_Click"/>
+                                </ContextMenu>
+                            </TreeView.ContextMenu>
+                        </TreeView>
+
+                        <!-- Вертикальный сплиттер -->
+                        <GridSplitter Grid.Column="1" Grid.RowSpan="2"
+                                      HorizontalAlignment="Stretch"
+                                      VerticalAlignment="Stretch"
+                                      Width="5"
+                                      Background="LightGray"
+                                      ShowsPreview="True" />
+
+                        <!-- Правая панель: DataGrid без обводки -->
+                        <DataGrid Grid.Column="2"
+                                  Grid.Row="0"
+                                  x:Name="AttributesDataGrid"
+                                  AutoGenerateColumns="False"
+                                  CanUserAddRows="False"
+                                  IsReadOnly="False"
+                                  EnableRowVirtualization="True"
+                                  EnableColumnVirtualization="True"
+                                  HeadersVisibility="Column"
+                                  RowHeaderWidth="0"
+                                  SelectionUnit="Cell"
+                                  PreviewMouseLeftButtonDown="AttributesDataGrid_PreviewMouseLeftButtonDown"
+                                  PreviewKeyDown="AttributesDataGrid_PreviewKeyDown"
+                                  Sorting="AttributesDataGrid_Sorting"
+                                  Background="Gray"
+                                  Visibility="Collapsed">
+                            <DataGrid.Columns>
+                                <!-- Столбец «Attribute» с серым фоном и синим выделением -->
+                                <DataGridTextColumn Header="Attribute"
+                                                    Binding="{Binding Key}"
+                                                    SortMemberPath="Key"
+                                                    IsReadOnly="True"
+                                                    Width="Auto">
+                                    <DataGridTextColumn.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="Background" Value="#EEEEEE" />
+                                            <Style.Triggers>
+                                                <Trigger Property="IsSelected" Value="True">
+                                                    <Setter Property="Background"
+                                                            Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                                                    <Setter Property="Foreground"
+                                                            Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </DataGridTextColumn.CellStyle>
+                                </DataGridTextColumn>
+                                <!-- Столбец «Value» -->
+                                <DataGridTextColumn Header="Value"
+                                                    Binding="{Binding Value}"
+                                                    SortMemberPath="Value"
+                                                    Width="3*" />
+                            </DataGrid.Columns>
+                            <DataGrid.CellStyle>
+                                <Style TargetType="DataGridCell">
+                                    <EventSetter Event="MouseDoubleClick"
+                                                 Handler="AttributesDataGrid_CellMouseDoubleClick" />
+                                </Style>
+                            </DataGrid.CellStyle>
+                        </DataGrid>
+                        <!-- Панель Raw Data -->
+                        <Grid Grid.Column="2"
+                              Grid.Row="1"
+                              x:Name="RawDataPanel"
+                              Visibility="Collapsed"
+                              Background="#ececec"
+                              Panel.ZIndex="1">
+                            <Grid.RowDefinitions>
+                                <!-- Заголовок «Raw Data» (обязательно Auto, чтобы он не «тянулся») -->
+                                <RowDefinition Height="Auto" />
+                                <!-- Текстовое поле: займёт всё свободное пространство до StatusBar -->
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <!-- 2.1. Заголовок -->
+                            <TextBlock Text="Raw Data"
+                                       FontWeight="Bold"
+                                       Margin="6,5,5,5"
+                                       Grid.Row="0" />
+                            <!-- 2.2. Сам TextBox, который растянется до самого низу (StatusBar) с нижним Margin=5 -->
+                            <TextBox x:Name="RawDataTextBox"
+                                     Grid.Row="1"
+                                     AcceptsReturn="True"
+                                     VerticalScrollBarVisibility="Auto"
+                                     HorizontalScrollBarVisibility="Auto"
+                                     TextWrapping="Wrap"
+                                     FontFamily="Consolas"
+                                     IsReadOnly="True"
+                                     Margin="5,0,5,5"
+                                     Background="White"
+                                     BorderBrush="DarkGray"
+                                     BorderThickness="1">
+                            </TextBox>
+                        </Grid>
+                </Grid>
+            </TabItem>
+
+            <!-- 2. 3D Objects tab -->
+            <TabItem Header="3D Objects">
+                <Grid Background="Gray">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="350"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Tree view для выбора объектов -->
+                    <TreeView x:Name="Objects3DTreeView"
+                              Grid.Column="0"
+                              Background="White"
+                              SelectedItemChanged="Objects3DTreeView_SelectedItemChanged"
+                              BorderThickness="0.6"
+                              Margin="0">
+                    </TreeView>
+
+                    <GridSplitter Grid.Column="1"
+                                  HorizontalAlignment="Stretch"
+                                  VerticalAlignment="Stretch"
+                                  Width="5"
+                                  Background="LightGray"/>
+
+                    <!-- 3D Viewport -->
+                    <Grid Grid.Column="2">
+                        <!-- HelixViewport3D для отображения 3D моделей -->
+                        <helix:HelixViewport3D x:Name="Model3DView"
+                                               Background="#F0F0F0"
+                                               Visibility="Collapsed">
+                            <helix:DefaultLights/>
+                            <ModelVisual3D x:Name="Model3DContainer"/>
+                        </helix:HelixViewport3D>
+
+                        <!-- Панель помощи для 3D view -->
+                        <Border x:Name="ViewHelpPanel"
+                                Background="#80000000"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Right"
+                                Margin="0,10,10,0"
+                                Padding="8,4"
+                                CornerRadius="4"
+                                Visibility="Collapsed">
+                            <TextBlock Foreground="White" FontSize="11">
+                                Right-click + drag: Rotate | Mouse wheel: Zoom
+                            </TextBlock>
+                        </Border>
+
+                        <!-- Панель информации о 3D модели -->
+                        <Border x:Name="ModelInfoPanel"
+                                Background="#80000000"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Left"
+                                Margin="10,0,0,10"
+                                Padding="10"
+                                CornerRadius="4"
+                                Visibility="Collapsed">
+                            <TextBlock x:Name="ModelInfoText"
+                                       Foreground="White"
+                                       FontFamily="Consolas"
+                                       FontSize="12"/>
+                        </Border>
+
+                        <!-- Сообщение когда ничего не выбрано -->
+                        <TextBlock x:Name="No3DObjectText"
+                                   Text="Select a 3D object from the tree to view it"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="14"
+                                   Foreground="Gray"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <!-- 3. Textures tab -->
+            <TabItem Header="Textures">
+                <Grid Background="Gray">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="5" />
+                        <ColumnDefinition Width="5*" />
+                    </Grid.ColumnDefinitions>
+
+                    <ListBox x:Name="TexturesListBox"
+                             Grid.Column="0"
+                             Background="White"
+                             SelectionChanged="TexturesListBox_SelectionChanged">
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Delete" Click="DeleteTextureMenuItem_Click"/>
+                                <MenuItem Header="Import Texture" Click="ImportTextureMenuItem_Click"/>
+                                <MenuItem Header="Export Texture" Click="ExportTextureMenuItem_Click"/>
+                                <MenuItem Header="New Texture" Click="NewTextureMenuItem_Click"/>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
+                    </ListBox>
+
+                    <GridSplitter Grid.Column="1"
+                                  HorizontalAlignment="Stretch"
+                                  VerticalAlignment="Stretch"
+                                  Width="5"
+                                  Background="LightGray" />
+
+                    <Border Grid.Column="2" Background="#ececec" BorderBrush="DarkGray" BorderThickness="1" Margin="0">
+                        <Image x:Name="TexturePreviewImage" Stretch="Uniform" />
+                    </Border>
+                </Grid>
+            </TabItem>
+
+
+        </TabControl>
+    </DockPanel>
+</Window>

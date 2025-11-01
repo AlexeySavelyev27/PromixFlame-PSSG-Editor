@@ -1,0 +1,3285 @@
+﻿{
+  "nodeName": "PSSGDATABASE",
+  "attributes": {},
+  "childrenCount": 1,
+  "children": [
+    {
+      "nodeName": "LIBRARY",
+      "attributes": {
+        "type": {
+          "decodedAs": "string",
+          "value": "YYY",
+          "rawHex": "00 00 00 03 59 59 59",
+          "byteCount": 7
+        }
+      },
+      "childrenCount": 24,
+      "children": [
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 128,
+              "rawHex": "00 00 00 80",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt5",
+              "rawHex": "00 00 00 04 64 78 74 35",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "l_caterham_dc",
+              "rawHex": "00 00 00 0D 6C 5F 63 61 74 65 72 68 61 6D 5F 64 63",
+              "byteCount": 17
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 32768,
+                  "rawHex": "00 00 80 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 32768,
+                  "rawDataPreview": "FF FF 00 00 00 00 00 00 00 08 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 20 00 00 00 D5 55 55 55 FF FF 00 00 00 00 00 00 20 00 00 00 FF 55 55 55 FF FF 00 00 00 00 00 00 20 00 00 00 FF 55 55 55 FF FF 00 00 00 00 00 00 20 00 00 00 FF 55 55 55 ..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 128,
+              "rawHex": "00 00 00 80",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt5",
+              "rawHex": "00 00 00 04 64 78 74 35",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "l_redbull_dc",
+              "rawHex": "00 00 00 0C 6C 5F 72 65 64 62 75 6C 6C 5F 64 63",
+              "byteCount": 16
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 32768,
+                  "rawHex": "00 00 80 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 32768,
+                  "rawDataPreview": "FF FF 00 00 00 00 00 00 20 08 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 00 08 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 20 08 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 ..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 512,
+              "rawHex": "00 00 02 00",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt5",
+              "rawHex": "00 00 00 04 64 78 74 35",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "rival_select",
+              "rawHex": "00 00 00 0C 72 69 76 61 6C 5F 73 65 6C 65 63 74",
+              "byteCount": 16
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 131072,
+                  "rawHex": "00 02 00 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 131072,
+                  "rawDataPreview": "00 01 00 00 00 00 00 00 FF FF DE F7 00 00 00 00 00 01 00 00 00 00 00 00 FF FF FE FF 00 00 00 00 00 01 00 00 00 00 00 00 FF FF FE FF 00 00 00 00 00 01 00 00 00 00 00 00 FF FF FE FF 00 00 00 00 00 01 00 00 00 00 00 00 FF FF FE FF 00 00 00 00 00 01 00 00 00 00 00 00 FF FF FE FF 00 00 00 00 00 01 00 00 00 00 00 00 FF FF FE FF 00 00 00 00 00 01 00 00 00 00 00 00 FF FF FE FF 00 00 00 00 ..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 128,
+              "rawHex": "00 00 00 80",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt5",
+              "rawHex": "00 00 00 04 64 78 74 35",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "l_hrt_dc",
+              "rawHex": "00 00 00 08 6C 5F 68 72 74 5F 64 63",
+              "byteCount": 12
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 32768,
+                  "rawHex": "00 00 80 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 32768,
+                  "rawDataPreview": "FF FF 00 00 00 00 00 00 00 08 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 20 08 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 00 08 00 00 55 55 55 55 ..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 128,
+              "rawHex": "00 00 00 80",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt5",
+              "rawHex": "00 00 00 04 64 78 74 35",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "l_mclaren_dc",
+              "rawHex": "00 00 00 0C 6C 5F 6D 63 6C 61 72 65 6E 5F 64 63",
+              "byteCount": 16
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 32768,
+                  "rawHex": "00 00 80 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 32768,
+                  "rawDataPreview": "FF FF 00 00 00 00 00 00 00 08 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 00 08 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 20 08 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 20 00 00 00 F7 55 55 55 FF FF 00 00 00 00 00 00 20 00 00 00 FF 55 55 55 FF FF 00 00 00 00 00 00 20 00 00 00 FF 55 55 55 FF FF 00 00 00 00 00 00 20 00 00 00 FF 55 55 55 FF FF 00 00 00 00 00 00 21 08 00 00 FD F5 D5 55 ..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 32,
+              "rawHex": "00 00 00 20",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 32,
+              "rawHex": "00 00 00 20",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt3",
+              "rawHex": "00 00 00 04 64 78 74 33",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "led_green_0",
+              "rawHex": "00 00 00 0B 6C 65 64 5F 67 72 65 65 6E 5F 30",
+              "byteCount": 15
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 1024,
+                  "rawHex": "00 00 04 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 1024,
+                  "rawDataPreview": "00 00 00 00 00 00 00 00 C0 BF E1 B7 AA AA AA AA 00 00 00 00 00 00 00 00 C0 BF E1 B7 AA AA AA AA 00 00 00 00 00 00 00 00 C0 BF E1 B7 AA AA AA AA 00 00 00 00 00 00 00 00 C0 BF E1 B7 AA AA AA AA 00 00 00 00 00 00 00 00 C0 BF E1 B7 AA AA AA AA 00 00 00 00 00 00 00 00 C0 BF E1 B7 AA AA AA AA 00 00 00 00 00 00 00 00 C0 BF E1 B7 AA AA AA AA 00 00 00 00 00 00 00 00 C0 BF E1 B7 AA AA AA AA ..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 32,
+              "rawHex": "00 00 00 20",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 32,
+              "rawHex": "00 00 00 20",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt3",
+              "rawHex": "00 00 00 04 64 78 74 33",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "led_green_1",
+              "rawHex": "00 00 00 0B 6C 65 64 5F 67 72 65 65 6E 5F 31",
+              "byteCount": 15
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 1024,
+                  "rawHex": "00 00 04 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 1024,
+                  "rawDataPreview": "00 00 00 00 00 00 00 00 C0 BF E1 B7 AA AA AA AA 00 00 00 00 00 10 00 A4 C0 BF E1 B7 AA AA AA AA 00 00 10 85 B6 FF FF AE C0 BF E1 B7 AA AA AA AA 00 85 DB EE FF FF 47 12 C0 BF E1 B7 AA AA AA AA 58 01 EE BD FF FF 21 74 C0 BF E1 B7 AA AA AA AA 00 00 58 01 FF 6B EA FF C0 BF E1 B7 AA AA AA AA 00 00 00 00 01 00 4A 00 C0 BF E1 B7 AA AA AA AA 00 00 00 00 00 00 00 00 C0 BF E1 B7 AA AA AA AA ..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt3",
+              "rawHex": "00 00 00 04 64 78 74 33",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "career_long",
+              "rawHex": "00 00 00 0B 63 61 72 65 65 72 5F 6C 6F 6E 67",
+              "byteCount": 15
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 65536,
+                  "rawHex": "00 01 00 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 65536,
+                  "rawDataPreview": "FF FF FF FF FF FF FF FF A7 F2 BA D6 D5 B5 2D 0F FF FF FF FF FF FF FF FF E4 E9 58 CE 0A 60 9C 27 FF FF FF FF FF FF FF FF 82 E9 33 E5 25 0B 00 00 FF FF FF FF FF FF FF FF C1 F9 5D E7 5C 5C 5C 56 FF FF FF FF FF FF FF FF 9D E7 1C E7 57 A8 BE A8 FF FF FF FF FF FF FF FF DE EF 3C E7 55 BF EF 3B FF FF FF FF FF FF FF FF D9 F6 9E EF FD D5 7D D0 FF FF FF FF FF FF FF FF 9D EF 5C EF FD 0A AB 28 ..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt3",
+              "rawHex": "00 00 00 04 64 78 74 33",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "difficulty_easy",
+              "rawHex": "00 00 00 0F 64 69 66 66 69 63 75 6C 74 79 5F 65 61 73 79",
+              "byteCount": 19
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 65536,
+                  "rawHex": "00 01 00 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 65536,
+                  "rawDataPreview": "FF FF FF FF FF FF FF FF B6 DE 56 D6 F9 02 22 A2 FF FF FF FF FF FF FF FF B6 E6 76 D6 FF AA FA 5F FF FF FF FF FF FF FF FF 96 DE 56 D6 AA 00 FF BF FF FF FF FF FF FF FF FF 96 DE 76 D6 FA AA D5 0A FF FF FF FF FF FF FF FF 97 DE 76 D6 57 0A 02 80 FF FF FF FF FF FF FF FF 97 DE 14 CE AA 00 E0 5E FF FF FF FF FF FF FF FF 96 DE D4 C5 00 80 7F D5 FF FF FF FF FF FF FF FF 76 D6 F4 C5 E0 5E 55 FF ..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt3",
+              "rawHex": "00 00 00 04 64 78 74 33",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "difficulty_hard",
+              "rawHex": "00 00 00 0F 64 69 66 66 69 63 75 6C 74 79 5F 68 61 72 64",
+              "byteCount": 19
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 65536,
+                  "rawHex": "00 01 00 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 65536,
+                  "rawDataPreview": "FF FF FF FF FF FF FF FF 0C 63 0B 5B AE A8 A8 88 FF FF FF FF FF FF FF FF 0C 63 EB 5A 5A 5E F8 E0 FF FF FF FF FF FF FF FF 0C 63 CB 5A AF AB AB AA FF FF FF FF FF FF FF FF 0C 63 EB 5A FB EB BF FF FF FF FF FF FF FF FF FF 0C 63 EB 5A FF EA FF FF FF FF FF FF FF FF FF FF 0C 63 EB 5A FB FF 57 57 FF FF FF FF FF FF FF FF EC 62 EB 5A FF 5F 7D 75 FF FF FF FF FF FF FF FF CC 62 EB 5A 75 57 DD FD ..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt3",
+              "rawHex": "00 00 00 04 64 78 74 33",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "career_ydt",
+              "rawHex": "00 00 00 0A 63 61 72 65 65 72 5F 79 64 74",
+              "byteCount": 14
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 65536,
+                  "rawHex": "00 01 00 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 65536,
+                  "rawDataPreview": "FF FF FF FF FF FF FF FF BE E7 C1 10 55 55 B5 0B FF FF FF FF FF FF FF FF 7D E7 A1 08 25 03 00 00 FF FF FF FF FF FF FF FF DF F7 7D EF 7D FA FF FF FF FF FF FF FF FF FF FF BE F7 7D EF D5 AA AA AA FF FF FF FF FF FF FF FF BE F7 7D EF FF 82 AA AA FF FF FF FF FF FF FF FF BE F7 7D EF FF 02 AA AA FF FF FF FF FF FF FF FF BE F7 9D EF FF 0A AA 2A FF FF FF FF FF FF FF FF BE F7 7D EF BF 00 AA 00 ..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 32,
+              "rawHex": "00 00 00 20",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 32,
+              "rawHex": "00 00 00 20",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt3",
+              "rawHex": "00 00 00 04 64 78 74 33",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "led_off",
+              "rawHex": "00 00 00 07 6C 65 64 5F 6F 66 66",
+              "byteCount": 11
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 1024,
+                  "rawHex": "00 00 04 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 1024,
+                  "rawDataPreview": "00 00 00 00 00 00 00 00 FF FF 00 00 00 00 00 00 00 00 00 00 00 00 00 00 FF FF 00 00 00 00 00 00 00 00 00 00 00 00 00 00 FF FF 00 00 00 00 00 00 00 00 00 00 00 00 00 00 FF FF 00 00 00 00 00 00 00 00 00 00 00 00 00 00 FF FF 00 00 00 00 00 00 00 00 00 00 00 00 00 00 FF FF 00 00 00 00 00 00 00 00 00 00 00 00 00 00 FF FF 00 00 00 00 00 00 00 00 00 00 00 00 00 00 FF FF 00 00 00 00 00 00 ..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 128,
+              "rawHex": "00 00 00 80",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt5",
+              "rawHex": "00 00 00 04 64 78 74 35",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "l_marussia_dc",
+              "rawHex": "00 00 00 0D 6C 5F 6D 61 72 75 73 73 69 61 5F 64 63",
+              "byteCount": 17
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 32768,
+                  "rawHex": "00 00 80 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 32768,
+                  "rawDataPreview": "FF FF 00 00 00 00 00 00 00 08 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 20 08 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 20 00 00 00 FF 55 55 55 ..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 128,
+              "rawHex": "00 00 00 80",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt5",
+              "rawHex": "00 00 00 04 64 78 74 35",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "l_ferrari_dc",
+              "rawHex": "00 00 00 0C 6C 5F 66 65 72 72 61 72 69 5F 64 63",
+              "byteCount": 16
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 32768,
+                  "rawHex": "00 00 80 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 32768,
+                  "rawDataPreview": "FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 ..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 128,
+              "rawHex": "00 00 00 80",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt5",
+              "rawHex": "00 00 00 04 64 78 74 35",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "l_mercedes_dc",
+              "rawHex": "00 00 00 0D 6C 5F 6D 65 72 63 65 64 65 73 5F 64 63",
+              "byteCount": 17
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 32768,
+                  "rawHex": "00 00 80 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 32768,
+                  "rawDataPreview": "FF FF 00 00 00 00 00 00 20 08 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 00 08 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 00 08 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 20 08 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 20 00 00 00 F7 55 55 55 FF FF 00 00 00 00 00 00 20 00 00 00 F7 55 55 55 FF FF 00 00 00 00 00 00 21 08 00 00 F7 F5 EF F5 FF FF 00 00 00 00 00 00 01 08 20 00 FF FF 5F FF ..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 128,
+              "rawHex": "00 00 00 80",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt5",
+              "rawHex": "00 00 00 04 64 78 74 35",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "l_williams_dc",
+              "rawHex": "00 00 00 0D 6C 5F 77 69 6C 6C 69 61 6D 73 5F 64 63",
+              "byteCount": 17
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 32768,
+                  "rawHex": "00 00 80 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 32768,
+                  "rawDataPreview": "FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 ..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt3",
+              "rawHex": "00 00 00 04 64 78 74 33",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "career_short",
+              "rawHex": "00 00 00 0C 63 61 72 65 65 72 5F 73 68 6F 72 74",
+              "byteCount": 16
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 65536,
+                  "rawHex": "00 01 00 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 65536,
+                  "rawDataPreview": "FF FF FF FF FF FF FF FF 81 18 61 10 0B AD AB AB FF FF FF FF FF FF FF FF 61 20 81 18 55 5F 57 5D FF FF FF FF FF FF FF FF 81 20 81 18 AF AF BA BF FF FF FF FF FF FF FF FF 61 20 A1 18 FB EF FF EE FF FF FF FF FF FF FF FF 61 20 81 18 55 FF FF FD FF FF FF FF FF FF FF FF 81 20 61 10 AA EA EA FA FF FF FF FF FF FF FF FF 81 18 61 10 A8 EA EA 6A FF FF FF FF FF FF FF FF 61 10 40 10 80 E8 E8 F8 ..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 32,
+              "rawHex": "00 00 00 20",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 32,
+              "rawHex": "00 00 00 20",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt3",
+              "rawHex": "00 00 00 04 64 78 74 33",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "led_red_0",
+              "rawHex": "00 00 00 09 6C 65 64 5F 72 65 64 5F 30",
+              "byteCount": 13
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 1024,
+                  "rawHex": "00 00 04 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 1024,
+                  "rawDataPreview": "00 00 00 00 00 00 00 00 22 F8 02 F0 AA AA AA AA 00 00 00 00 00 00 00 00 22 F8 02 F0 AA AA AA AA 00 00 00 00 00 00 00 00 22 F8 02 F0 AA AA AA AA 00 00 00 00 00 00 00 00 22 F8 02 F0 AA AA AA AA 00 00 00 00 00 00 00 00 22 F8 02 F0 AA AA AA AA 00 00 00 00 00 00 00 00 22 F8 02 F0 AA AA AA AA 00 00 00 00 00 00 00 00 22 F8 02 F0 AA AA AA AA 00 00 00 00 00 00 00 00 22 F8 02 F0 AA AA AA AA ..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 32,
+              "rawHex": "00 00 00 20",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 32,
+              "rawHex": "00 00 00 20",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt3",
+              "rawHex": "00 00 00 04 64 78 74 33",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "led_red_1",
+              "rawHex": "00 00 00 09 6C 65 64 5F 72 65 64 5F 31",
+              "byteCount": 13
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 1024,
+                  "rawHex": "00 00 04 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 1024,
+                  "rawDataPreview": "00 00 00 00 00 00 00 00 22 F8 02 F0 AA AA AA AA 00 00 00 00 00 10 00 A4 22 F8 02 F0 AA AA AA AA 00 00 10 85 B6 FF FF AE 22 F8 02 F0 AA AA AA AA 00 85 DB EE FF FF 47 12 22 F8 02 F0 AA AA AA AA 58 01 EE BD FF FF 21 74 22 F8 02 F0 AA AA AA AA 00 00 58 01 FF 6B EA FF 22 F8 02 F0 AA AA AA AA 00 00 00 00 01 00 4A 00 22 F8 02 F0 AA AA AA AA 00 00 00 00 00 00 00 00 22 F8 02 F0 AA AA AA AA ..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 128,
+              "rawHex": "00 00 00 80",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt5",
+              "rawHex": "00 00 00 04 64 78 74 35",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "l_tororosso_dc",
+              "rawHex": "00 00 00 0E 6C 5F 74 6F 72 6F 72 6F 73 73 6F 5F 64 63",
+              "byteCount": 18
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 32768,
+                  "rawHex": "00 00 80 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 32768,
+                  "rawDataPreview": "FF FF 00 00 00 00 00 00 00 08 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 20 08 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 20 00 00 00 D5 55 55 55 ..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 128,
+              "rawHex": "00 00 00 80",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt5",
+              "rawHex": "00 00 00 04 64 78 74 35",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "l_lotus_dc",
+              "rawHex": "00 00 00 0A 6C 5F 6C 6F 74 75 73 5F 64 63",
+              "byteCount": 14
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 32768,
+                  "rawHex": "00 00 80 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 32768,
+                  "rawDataPreview": "FF FF 00 00 00 00 00 00 00 08 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 20 08 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 20 00 00 00 FD 55 55 55 FF FF 00 00 00 00 00 00 20 00 00 00 FF 55 55 55 FF FF 00 00 00 00 00 00 20 00 00 00 FF 55 55 55 FF FF 00 00 00 00 00 00 20 00 00 00 FF 55 55 55 ..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 128,
+              "rawHex": "00 00 00 80",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt5",
+              "rawHex": "00 00 00 04 64 78 74 35",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "l_forceindia_dc",
+              "rawHex": "00 00 00 0F 6C 5F 66 6F 72 63 65 69 6E 64 69 61 5F 64 63",
+              "byteCount": 19
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 32768,
+                  "rawHex": "00 00 80 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 32768,
+                  "rawDataPreview": "FF FF 00 00 00 00 00 00 00 08 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 20 08 00 00 55 55 55 55 ..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 128,
+              "rawHex": "00 00 00 80",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt5",
+              "rawHex": "00 00 00 04 64 78 74 35",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "l_sauber_dc",
+              "rawHex": "00 00 00 0B 6C 5F 73 61 75 62 65 72 5F 64 63",
+              "byteCount": 15
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 32768,
+                  "rawHex": "00 00 80 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 32768,
+                  "rawDataPreview": "FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 01 00 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 00 08 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 20 08 00 00 55 55 55 55 FF FF 00 00 00 00 00 00 20 00 00 00 F7 55 55 55 ..."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "nodeName": "TEXTURE",
+          "attributes": {
+            "width": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "height": {
+              "decodedAs": "uint32",
+              "value": 256,
+              "rawHex": "00 00 01 00",
+              "byteCount": 4
+            },
+            "texelFormat": {
+              "decodedAs": "string",
+              "value": "dxt3",
+              "rawHex": "00 00 00 04 64 78 74 33",
+              "byteCount": 8
+            },
+            "transient": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "wrapS": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapT": {
+              "decodedAs": "uint32",
+              "value": 2,
+              "rawHex": "00 00 00 02",
+              "byteCount": 4
+            },
+            "wrapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "minFilter": {
+              "decodedAs": "uint32",
+              "value": 5,
+              "rawHex": "00 00 00 05",
+              "byteCount": 4
+            },
+            "magFilter": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapR": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "gammaRemapG": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapB": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "gammaRemapA": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "automipmap": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "numberMipMapLevels": {
+              "decodedAs": "uint32",
+              "value": 0,
+              "rawHex": "00 00 00 00",
+              "byteCount": 4
+            },
+            "imageBlockCount": {
+              "decodedAs": "uint32",
+              "value": 1,
+              "rawHex": "00 00 00 01",
+              "byteCount": 4
+            },
+            "id": {
+              "decodedAs": "string",
+              "value": "difficulty_normal",
+              "rawHex": "00 00 00 11 64 69 66 66 69 63 75 6C 74 79 5F 6E 6F 72 6D 61 6C",
+              "byteCount": 21
+            }
+          },
+          "childrenCount": 1,
+          "children": [
+            {
+              "nodeName": "TEXTUREIMAGEBLOCK",
+              "attributes": {
+                "typename": {
+                  "decodedAs": "string",
+                  "value": "Raw",
+                  "rawHex": "00 00 00 03 52 61 77",
+                  "byteCount": 7
+                },
+                "size": {
+                  "decodedAs": "uint32",
+                  "value": 65536,
+                  "rawHex": "00 01 00 00",
+                  "byteCount": 4
+                }
+              },
+              "childrenCount": 1,
+              "children": [
+                {
+                  "nodeName": "TEXTUREIMAGEBLOCKDATA",
+                  "attributes": {},
+                  "rawDataSize": 65536,
+                  "rawDataPreview": "FF FF FF FF FF FF FF FF 99 CE 8D 73 0B B5 D5 55 FF FF FF FF FF FF FF FF 5C E7 0F 84 E0 80 0B 25 FF FF FF FF FF FF FF FF 3C E7 6A 6B 55 5E 78 80 FF FF FF FF FF FF FF FF 8F 94 69 6B 55 55 55 F8 FF FF FF FF FF FF FF FF 89 73 49 6B 03 00 2A AA FF FF FF FF FF FF FF FF AA 7B 69 73 AA BA BF 57 FF FF FF FF FF FF FF FF CA 7B 69 73 EA 82 8A FD FF FF FF FF FF FF FF FF CA 7B 69 73 8B AF BF 55 ..."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

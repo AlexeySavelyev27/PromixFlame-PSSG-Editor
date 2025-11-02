@@ -42,6 +42,280 @@ namespace PSSGEditor
         }
 
         /// <summary>
+        /// Создание кастомной системы координат с grid плоскостью
+        /// </summary>
+        private ModelVisual3D CreateCustomCoordinateSystem()
+        {
+            var group = new Model3DGroup();
+
+            // 1. Создаем grid плоскость (XY плоскость, полупрозрачная)
+            CreateGridPlane(group);
+
+            // 2. Создаем оси координат
+            CreateCoordinateAxes(group);
+
+            // 3. Создаем центральную точку
+            CreateCenterPoint(group);
+
+            var visual = new ModelVisual3D { Content = group };
+            return visual;
+        }
+
+        /// <summary>
+        /// Создание grid плоскости в клетку
+        /// </summary>
+        private void CreateGridPlane(Model3DGroup group)
+        {
+            double gridSize = 10;
+            double gridStep = 1;
+            int gridLines = (int)(gridSize / gridStep);
+
+            var gridGeometry = new MeshGeometry3D();
+
+            // Создаем линии сетки
+            for (int i = -gridLines; i <= gridLines; i++)
+            {
+                double pos = i * gridStep;
+
+                // Линии параллельные X
+                AddGridLine(gridGeometry,
+                    new Point3D(-gridSize, pos, 0),
+                    new Point3D(gridSize, pos, 0),
+                    0.02);
+
+                // Линии параллельные Y
+                AddGridLine(gridGeometry,
+                    new Point3D(pos, -gridSize, 0),
+                    new Point3D(pos, gridSize, 0),
+                    0.02);
+            }
+
+            // Материал для сетки (полупрозрачный серый)
+            var gridBrush = new SolidColorBrush(Color.FromArgb(60, 128, 128, 128));
+            var gridMaterial = new DiffuseMaterial(gridBrush);
+
+            var gridModel = new GeometryModel3D
+            {
+                Geometry = gridGeometry,
+                Material = gridMaterial,
+                BackMaterial = gridMaterial
+            };
+
+            group.Children.Add(gridModel);
+        }
+
+        /// <summary>
+        /// Добавление линии сетки
+        /// </summary>
+        private void AddGridLine(MeshGeometry3D geometry, Point3D start, Point3D end, double thickness)
+        {
+            Vector3D direction = end - start;
+            Vector3D perpendicular = new Vector3D(-direction.Y, direction.X, 0);
+            perpendicular.Normalize();
+            perpendicular *= thickness / 2;
+
+            int baseIndex = geometry.Positions.Count;
+
+            // 4 угла линии
+            geometry.Positions.Add(start - perpendicular);
+            geometry.Positions.Add(start + perpendicular);
+            geometry.Positions.Add(end + perpendicular);
+            geometry.Positions.Add(end - perpendicular);
+
+            // 2 треугольника для линии
+            geometry.TriangleIndices.Add(baseIndex);
+            geometry.TriangleIndices.Add(baseIndex + 1);
+            geometry.TriangleIndices.Add(baseIndex + 2);
+
+            geometry.TriangleIndices.Add(baseIndex);
+            geometry.TriangleIndices.Add(baseIndex + 2);
+            geometry.TriangleIndices.Add(baseIndex + 3);
+        }
+
+        /// <summary>
+        /// Создание осей координат (X - красная, Y - зеленая, Z - синяя)
+        /// </summary>
+        private void CreateCoordinateAxes(Model3DGroup group)
+        {
+            double axisLength = 5;
+            double axisThickness = 0.05;
+
+            // X ось (красная)
+            CreateAxis(group, new Point3D(0, 0, 0), new Point3D(axisLength, 0, 0),
+                Colors.Red, axisThickness);
+
+            // Y ось (зеленая)
+            CreateAxis(group, new Point3D(0, 0, 0), new Point3D(0, axisLength, 0),
+                Colors.Lime, axisThickness);
+
+            // Z ось (синяя)
+            CreateAxis(group, new Point3D(0, 0, 0), new Point3D(0, 0, axisLength),
+                Colors.Blue, axisThickness);
+        }
+
+        /// <summary>
+        /// Создание одной оси
+        /// </summary>
+        private void CreateAxis(Model3DGroup group, Point3D start, Point3D end,
+            Color color, double thickness)
+        {
+            var geometry = new MeshGeometry3D();
+            Vector3D direction = end - start;
+            double length = direction.Length;
+            direction.Normalize();
+
+            // Находим перпендикулярные векторы
+            Vector3D perpendicular1;
+            if (Math.Abs(direction.X) < 0.9)
+                perpendicular1 = Vector3D.CrossProduct(direction, new Vector3D(1, 0, 0));
+            else
+                perpendicular1 = Vector3D.CrossProduct(direction, new Vector3D(0, 1, 0));
+            perpendicular1.Normalize();
+            perpendicular1 *= thickness;
+
+            Vector3D perpendicular2 = Vector3D.CrossProduct(direction, perpendicular1);
+            perpendicular2.Normalize();
+            perpendicular2 *= thickness;
+
+            // Создаем цилиндр для оси
+            int segments = 8;
+            for (int i = 0; i < segments; i++)
+            {
+                double angle = 2 * Math.PI * i / segments;
+                double nextAngle = 2 * Math.PI * (i + 1) / segments;
+
+                Vector3D offset1 = perpendicular1 * Math.Cos(angle) + perpendicular2 * Math.Sin(angle);
+                Vector3D offset2 = perpendicular1 * Math.Cos(nextAngle) + perpendicular2 * Math.Sin(nextAngle);
+
+                int baseIndex = geometry.Positions.Count;
+
+                geometry.Positions.Add(start + offset1);
+                geometry.Positions.Add(start + offset2);
+                geometry.Positions.Add(end + offset2);
+                geometry.Positions.Add(end + offset1);
+
+                geometry.TriangleIndices.Add(baseIndex);
+                geometry.TriangleIndices.Add(baseIndex + 1);
+                geometry.TriangleIndices.Add(baseIndex + 2);
+
+                geometry.TriangleIndices.Add(baseIndex);
+                geometry.TriangleIndices.Add(baseIndex + 2);
+                geometry.TriangleIndices.Add(baseIndex + 3);
+            }
+
+            // Добавляем стрелку на конце
+            CreateArrowHead(geometry, end, direction, color, thickness * 3, length * 0.1);
+
+            var material = new DiffuseMaterial(new SolidColorBrush(color));
+            var model = new GeometryModel3D
+            {
+                Geometry = geometry,
+                Material = material,
+                BackMaterial = material
+            };
+
+            group.Children.Add(model);
+        }
+
+        /// <summary>
+        /// Создание стрелки на конце оси
+        /// </summary>
+        private void CreateArrowHead(MeshGeometry3D geometry, Point3D tip, Vector3D direction,
+            Color color, double radius, double length)
+        {
+            Point3D basePoint = tip - direction * length;
+
+            Vector3D perpendicular1;
+            if (Math.Abs(direction.X) < 0.9)
+                perpendicular1 = Vector3D.CrossProduct(direction, new Vector3D(1, 0, 0));
+            else
+                perpendicular1 = Vector3D.CrossProduct(direction, new Vector3D(0, 1, 0));
+            perpendicular1.Normalize();
+            perpendicular1 *= radius;
+
+            Vector3D perpendicular2 = Vector3D.CrossProduct(direction, perpendicular1);
+            perpendicular2.Normalize();
+            perpendicular2 *= radius;
+
+            int segments = 8;
+            int tipIndex = geometry.Positions.Count;
+            geometry.Positions.Add(tip);
+
+            for (int i = 0; i <= segments; i++)
+            {
+                double angle = 2 * Math.PI * i / segments;
+                Vector3D offset = perpendicular1 * Math.Cos(angle) + perpendicular2 * Math.Sin(angle);
+                geometry.Positions.Add(basePoint + offset);
+            }
+
+            for (int i = 0; i < segments; i++)
+            {
+                geometry.TriangleIndices.Add(tipIndex);
+                geometry.TriangleIndices.Add(tipIndex + i + 1);
+                geometry.TriangleIndices.Add(tipIndex + i + 2);
+            }
+        }
+
+        /// <summary>
+        /// Создание центральной точки
+        /// </summary>
+        private void CreateCenterPoint(Model3DGroup group)
+        {
+            var sphereGeometry = new MeshGeometry3D();
+            double radius = 0.1;
+            int segments = 16;
+
+            // Создаем простую сферу
+            for (int lat = 0; lat <= segments; lat++)
+            {
+                double theta = lat * Math.PI / segments;
+                double sinTheta = Math.Sin(theta);
+                double cosTheta = Math.Cos(theta);
+
+                for (int lon = 0; lon <= segments; lon++)
+                {
+                    double phi = lon * 2 * Math.PI / segments;
+                    double sinPhi = Math.Sin(phi);
+                    double cosPhi = Math.Cos(phi);
+
+                    double x = radius * cosPhi * sinTheta;
+                    double y = radius * sinPhi * sinTheta;
+                    double z = radius * cosTheta;
+
+                    sphereGeometry.Positions.Add(new Point3D(x, y, z));
+                }
+            }
+
+            // Индексы для треугольников
+            for (int lat = 0; lat < segments; lat++)
+            {
+                for (int lon = 0; lon < segments; lon++)
+                {
+                    int current = lat * (segments + 1) + lon;
+                    int next = current + segments + 1;
+
+                    sphereGeometry.TriangleIndices.Add(current);
+                    sphereGeometry.TriangleIndices.Add(next);
+                    sphereGeometry.TriangleIndices.Add(current + 1);
+
+                    sphereGeometry.TriangleIndices.Add(current + 1);
+                    sphereGeometry.TriangleIndices.Add(next);
+                    sphereGeometry.TriangleIndices.Add(next + 1);
+                }
+            }
+
+            var material = new DiffuseMaterial(Brushes.White);
+            var sphere = new GeometryModel3D
+            {
+                Geometry = sphereGeometry,
+                Material = material,
+                BackMaterial = material
+            };
+
+            group.Children.Add(sphere);
+        }
+
+        /// <summary>
         /// Обработчик выбора 3D объекта
         /// </summary>
         private void On3DObjectSelected(TreeViewItem item)
@@ -658,8 +932,8 @@ namespace PSSGEditor
                     }
                 }
 
-                // Добавляем систему координат
-                Model3DContainer.Children.Add(new CoordinateSystemVisual3D { ArrowLengths = 2 });
+                // Добавляем кастомную систему координат
+                Model3DContainer.Children.Add(CreateCustomCoordinateSystem());
 
                 // Настраиваем камеру
                 Model3DView.ResetCamera();
@@ -710,8 +984,8 @@ namespace PSSGEditor
                 ModelInfoText.Text += $"Total Vertices: {totalVertices}\n";
                 ModelInfoText.Text += $"Total Triangles: {totalTriangles}";
 
-                // Добавляем систему координат
-                Model3DContainer.Children.Add(new CoordinateSystemVisual3D { ArrowLengths = 2 });
+                // Добавляем кастомную систему координат
+                Model3DContainer.Children.Add(CreateCustomCoordinateSystem());
 
                 // Настраиваем камеру
                 Model3DView.ResetCamera();

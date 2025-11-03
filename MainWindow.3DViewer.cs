@@ -334,10 +334,13 @@ namespace PSSGEditor
 
             if (item.Tag is Pssg3DNode node)
             {
-                // Проверяем есть ли у этой ноды материалы
+                // ✅ ИСПРАВЛЕНИЕ: Ищем ВСЕ материалы в поддереве выбранной ноды
+                // СТАРАЯ ЛОГИКА: m.PathToRoot.Last() == node.Node (только прямые дети)
+                // НОВАЯ ЛОГИКА: ищем все материалы где нода есть в пути или в поддереве
                 var nodeMaterials = allMaterials.Where(m =>
-                    m.PathToRoot.Count > 0 &&
-                    m.PathToRoot.Last() == node.Node).ToList();
+                    m.PathToRoot.Contains(node.Node) || // Нода есть где-то в пути к корню
+                    IsNodeInSubtree(m.InstanceNode, node.Node) // Или render instance в поддереве
+                ).ToList();
 
                 if (nodeMaterials.Count > 0)
                 {
@@ -1252,6 +1255,29 @@ namespace PSSGEditor
                     return (int)PSSGFormat.ReadUInt32(attrBytes);
             }
             return defaultValue;
+        }
+
+        /// <summary>
+        /// Проверяет, находится ли нода в поддереве родительской ноды
+        /// Используется для правильного поиска материалов в LOD нодах
+        /// </summary>
+        private bool IsNodeInSubtree(PSSGNode childNode, PSSGNode parentNode)
+        {
+            if (childNode == null || parentNode == null)
+                return false;
+
+            // Проверяем прямое вхождение
+            if (parentNode.Children.Contains(childNode))
+                return true;
+
+            // Рекурсивно проверяем все дочерние ноды
+            foreach (var child in parentNode.Children)
+            {
+                if (IsNodeInSubtree(childNode, child))
+                    return true;
+            }
+
+            return false;
         }
 
         #endregion
